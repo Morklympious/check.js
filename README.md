@@ -1,9 +1,13 @@
-is.js
-=====
+# is.js
 
 [![JS.ORG](https://img.shields.io/badge/js.org-is-ffb400.svg?style=flat-square)](http://js.org)
 
-####This is a general-purpose check library.
+A micro checking library. (_Originally by Aras Atasaygin_)
+I'm bastardizing it and making it smaller to accomodate more common use-cases.
+
+Fork by Bradley Stafford.
+
+##This is a general-purpose check library.
 - No dependencies
 - AMD, Node & browser ready
 
