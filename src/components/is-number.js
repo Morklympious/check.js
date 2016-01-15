@@ -53,3 +53,18 @@ function finite(num) {
 function infinite(num) {
   return not(finite);
 }
+
+module.exports = {
+  equal: equal,
+  even: even,
+  odd: odd,
+  positive: positive,
+  negative: negative,
+  higher: higher,
+  lower:lower,
+  within: within,
+  decimal: decimal,
+  integer: integer,
+  finite: finite,
+  infinite: infinite
+}
