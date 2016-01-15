@@ -2,8 +2,6 @@ var u = require('./is-utilities.js'),
     type = u.type,
     types = u.types;
 
-
-
 function object(value) {
   return type(value) === types['object'];
 }
@@ -15,7 +13,6 @@ function array(value) {    // check native isArray first
 function string(value) {
     return type(value) === types['string'];
 }
-
 
 function char(value) {
   return string(value) && value.length === 1;
@@ -69,7 +66,7 @@ function _undefined(value) {
 }
 
 function json(value) {
-
+  // Not currently Implemented
 }
 
 
