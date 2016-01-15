@@ -12,23 +12,14 @@ var types = {
   '_function':  '[object Function]'
 };
 
-
+// TODO: Handle array of args for ease of writing
 function type(value) {
   return Object.prototype.toString.call(value);
-}
-
-function exists(value) {
-  var isnt = {
-    _null: not(type(value) === types._null),
-    _undefined: not(type(value) === types._undefined)
-  }
-  return isnt._null && isnt._undefined;
 }
 
 function not(value) {
   return !value;
 }
-
 
 function all(func) {
     var args = Array.prototype.slice.call(arguments);
@@ -48,6 +39,7 @@ function any(func) {
 
 
 module.exports = {
+  type: type,
   types: types,
   not: not,
   all: all,

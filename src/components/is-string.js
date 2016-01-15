@@ -1,27 +1,23 @@
-var test = require('./is-type').string
-
-var idxOf = String.prototype.indexOf,
-    caps = String.prototype.toUpperCase,
-    lows = String.prototype.toLowerCase;
+var test = require('./is-type.js').string
 
 function includes(str, sub) {
-    return test(str) && str.idxOf(sub) > -1;
+    return test(str) && str.indexOf(sub) > -1;
 };
 
 function caps(str) {
-   return test(str) && str === str.caps();
+   return test(str) && str === str.toUpperCase();
 }
 
 function lowercase(str) {
-   return test(str) && str === str.lows();
+   return test(str) && str === str.toLowerCase();
 }
 
 function begins(str, sub) {
-  return includes(str, sub) && str.idxOf(sub) === 0;
+  return includes(str, sub) && str.indexOf(sub) === 0;
 }
 
 function ends(str, sub) {
-  return includes(str, sub) && str.idxOf(sub) === (str.length - sub.length);
+  return includes(str, sub) && str.indexOf(sub) === (str.length - sub.length);
 }
 
 function empty(str) {

@@ -1,5 +1,4 @@
-// Time checks
-/* -------------------------------------------------------------------------- */
+var test = require('./is-type.js').date;
 
 var days = [
   'sunday',
@@ -10,7 +9,7 @@ var days = [
   'friday',
   'saturday'
   ];
-  
+
 var months = [
   'january',
   'february',
@@ -26,19 +25,18 @@ var months = [
   'december'
 ];
 
-// is a given date indicate today?
-is.today = function(obj) {
-    var now = new Date();
-    var todayString = now.toDateString();
-    return is.date(obj) && obj.toDateString() === todayString;
-};
+function today(date) {
+  var today = new Date().toDateString();
 
-// is a given date indicate yesterday?
-is.yesterday = function(obj) {
-    var now = new Date();
-    var yesterdayString = new Date(now.setDate(now.getDate() - 1)).toDateString();
-    return is.date(obj) && obj.toDateString() === yesterdayString;
-};
+  return test(date) && today === obj.toDateString();
+}
+
+function yesterday(date) {
+  var today = new Date(),
+      yesterday = new Date(today.setDate(today.getDate() - 1));
+
+  return test(date) && date.toDateString() === yesterday.toDateString();
+}
 
 // is a given date indicate tomorrow?
 is.tomorrow = function(obj) {

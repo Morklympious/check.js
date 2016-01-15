@@ -69,7 +69,6 @@ function json(value) {
   // Not currently Implemented
 }
 
-
 module.exports = {
   object: object,
   array: array,
@@ -82,8 +81,8 @@ module.exports = {
   error: error,
   arguments: arguments,
   nan: nan,
-  _null: _null
-  _undefined: _undefined
+  _null: _null,
+  _undefined: _undefined,
   json: json,
   char: char
 };

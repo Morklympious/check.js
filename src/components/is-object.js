@@ -1,4 +1,4 @@
-var test = require('./is-utilities.js').object;
+var test = require('./is-type.js').object;
 
 // has a given object got parameterized count property?
 function length(obj, count) {
@@ -21,5 +21,5 @@ module.exports = {
   length: length,
   empty: empty,
   contains: contains,
-  'window': _window
+  _window: _window
 }
