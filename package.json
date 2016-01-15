@@ -13,6 +13,6 @@
   },
   "homepage": "https://github.com/arasatasaygin/is.js",
   "devDependencies": {
-    
+    "webpack": "^1.12.11"
   }
 }
