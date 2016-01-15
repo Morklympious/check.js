@@ -1,51 +1,33 @@
-// String checks
-/* -------------------------------------------------------------------------- */
+var isString = require('./is-type').string
 
-// is a given string include parameter substring?
-is.include = function(str, substr) {
-    return str.indexOf(substr) > -1;
-};
-// include method does not support 'all' and 'any' interfaces
-is.include.api = ['not'];
+var idxOf = String.prototype.indexOf,
+    caps = String.prototype.toUpperCase,
+    lows = String.prototype.toLowerCase;
 
-// is a given string all uppercase?
-is.upperCase = function(str) {
-    return is.string(str) && str === str.toUpperCase();
+function includes(str, sub) {
+    return isString(str) && str.idxOf(sub) > -1;
 };
 
-// is a given string all lowercase?
-is.lowerCase = function(str) {
-    return is.string(str) && str === str.toLowerCase();
-};
+function caps(str) {
+   return isString(str) && str === str.caps();
+}
 
-// is string start with a given startWith parameter?
-is.startWith = function(str, startWith) {
-    return is.string(str) && str.indexOf(startWith) === 0;
-};
-// startWith method does not support 'all' and 'any' interfaces
-is.startWith.api = ['not'];
+function lowercase(str) {
+   return isString(str) && str === str.lows();
+}
 
-// is string end with a given endWith parameter?
-is.endWith = function(str, endWith) {
-    return is.string(str) && str.indexOf(endWith) > -1 && str.indexOf(endWith) === str.length -  endWith.length;
-};
-// endWith method does not support 'all' and 'any' interfaces
-is.endWith.api = ['not'];
+function begins(str, sub) {
+  return includes(str, sub) && str.idxOf(sub) === 0;
+}
 
-// is a given string or sentence capitalized?
-is.capitalized = function(str) {
-    if(is.not.string(str)) {
-        return false;
-    }
-    var words = str.split(' ');
-    var capitalized = [];
-    for(var i = 0; i < words.length; i++) {
-        capitalized.push(words[i][0] === words[i][0].toUpperCase());
-    }
-    return is.all.truthy.apply(null, capitalized);
-};
+function ends(str, sub) {
+  return includes(str, sub) && str.idxOf(sub) === (str.length - sub.length);
+}
 
-// is a given string palindrome?
-is.palindrome = function(str) {
-    return is.string(str) && str == str.split('').reverse().join('');
-};
+module.exports = {
+  includes: includes,
+  caps: caps,
+  lowercase: lowercase,
+  begins: begins,
+  ends: ends
+}
