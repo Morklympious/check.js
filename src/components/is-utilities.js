@@ -7,18 +7,28 @@ var types = {
   'regex':     '[object RegExp]',
   'date':      '[object Date]',
   'error':     '[object Error]',
-  'undefined': '[object Undefined]',
-  'null':      '[object Null]'
-}
+  '_undefined': '[object Undefined]',
+  '_null':      '[object Null]',
+  '_function':  '[object Function]'
+};
 
 
 function type(value) {
   return Object.prototype.toString.call(value);
 }
 
-function not(predicate) {
-  return !predicate();
+function exists(value) {
+  var isnt = {
+    _null: not(type(value) === types._null),
+    _undefined: not(type(value) === types._undefined)
+  }
+  return isnt._null && isnt._undefined;
 }
+
+function not(value) {
+  return !value;
+}
+
 
 function all(func) {
     var args = Array.prototype.slice.call(arguments);
@@ -35,6 +45,7 @@ function any(func) {
     return predicate();
   });
 }
+
 
 module.exports = {
   types: types,
