@@ -63,15 +63,26 @@ function year(date, target) {
 }
 
 // TODO: Add delta? e.g. "Within past three hours"
-function past(date) {
-  var now = new Date();
+// delta in milliseconds
+function past(date, delta) {
+  var now = new Date(),
+      delta = delta || 0,
+      current = now.getTime(),
+      dTime = date.getTime();
 
-  return test(date) && date.getTime() < now.getTime();
+  // if date.getTime() > now.getTime() - delta === true
+  return test(date) && (current - delta) < dTime < current;
 }
 
 //TODO: Add delta? e.g. "Within next hour"
-function future(date) {
-  return not(past(date))
+function future(date, delta) {
+  var now = new Date(),
+      delta = delta || 0,
+      current = now.getTime(),
+      dTime = date.getTime();
+
+  // if date.getTime() > now.getTime() - delta === true
+  return test(date) && current < dTime < (current + delta);
 }
 
 function weekend(date) {
@@ -81,27 +92,16 @@ function weekend(date) {
 function weekday(date) {
   return not(weekend);
 }
-// is a given date weekend?
-// 6: Saturday, 0: Sunday
-is.weekend = function(obj) {
-    return is.date(obj) && (obj.getDay() === 6 || obj.getDay() === 0);
-};
 
-// is a given date weekday?
-is.weekday = not(is.weekend);
+function within(date, start, end) {
+  var starting = start.getTime(),
+      current = date.getTime(),
+      ending = end.getTime();
 
-// is date within given range?
-is.inDateRange = function(obj, startObj, endObj) {
-    if(is.not.date(obj) || is.not.date(startObj) || is.not.date(endObj)) {
-        return false;
-    }
-    var givenDate = obj.getTime();
-    var start = startObj.getTime();
-    var end = endObj.getTime();
-    return givenDate > start && givenDate < end;
-};
-// inDateRange method does not support 'all' and 'any' interfaces
-is.inDateRange.api = ['not'];
+  return test(date) && test(start) && test(end) && starting <= current <= ending;
+}
+
+function
 
 // is a given date in last week range?
 is.inLastWeek = function(obj) {
