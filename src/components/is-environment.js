@@ -28,7 +28,7 @@ var w =   _window(window) && window,
     return !online();
   }
 
-  // Node/Browse
+  // Node/Browser
   function browser() {
     return new Function("return this === window;")();
   }
@@ -48,4 +48,17 @@ var w =   _window(window) && window,
 
   function mac() {
     return p.indexOf('Mac')
+  }
+
+  module.exports {
+    touch: touch,
+    multitouch: multitouch,
+    geolocation: geolocation,
+    online: online,
+    offline: offline,
+    browser: browser,
+    node: node,
+    windows: windows,
+    linux: linux,
+    mac: mac
   }

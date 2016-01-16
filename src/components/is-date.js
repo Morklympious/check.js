@@ -30,6 +30,13 @@ var months = [
   'december'
 ];
 
+//Milliseconds
+var lengths = {
+  day: 86400000,
+  week: 86400000 * 7,
+  month: 86400000 * 7 * 4
+}
+
 function day(date, target) {
   return test(date) && target.toLowerCase() === days[date.getDay()];
 }
@@ -71,7 +78,7 @@ function past(date, delta) {
       dTime = date.getTime();
 
   // if date.getTime() > now.getTime() - delta === true
-  return test(date) && (current - delta) < dTime < current;
+  return test(date) && ((current - delta) < dTime < current) || dTime < current;
 }
 
 //TODO: Add delta? e.g. "Within next hour"
@@ -82,7 +89,7 @@ function future(date, delta) {
       dTime = date.getTime();
 
   // if date.getTime() > now.getTime() - delta === true
-  return test(date) && current < dTime < (current + delta);
+  return test(date) && (current < dTime < (current + delta)) || current < dTime;
 }
 
 function weekend(date) {
@@ -93,6 +100,7 @@ function weekday(date) {
   return not(weekend);
 }
 
+// date is within date range
 function within(date, start, end) {
   var starting = start.getTime(),
       current = date.getTime(),
@@ -101,49 +109,15 @@ function within(date, start, end) {
   return test(date) && test(start) && test(end) && starting <= current <= ending;
 }
 
-function
-
-// is a given date in last week range?
-is.inLastWeek = function(obj) {
-    return is.inDateRange(obj, new Date(new Date().setDate(new Date().getDate() - 7)), new Date());
-};
-
-// is a given date in last month range?
-is.inLastMonth = function(obj) {
-    return is.inDateRange(obj, new Date(new Date().setMonth(new Date().getMonth() - 1)), new Date());
-};
-
-// is a given date in last year range?
-is.inLastYear = function(obj) {
-    return is.inDateRange(obj, new Date(new Date().setFullYear(new Date().getFullYear() - 1)), new Date());
-};
-
-// is a given date in next week range?
-is.inNextWeek = function(obj) {
-    return is.inDateRange(obj, new Date(), new Date(new Date().setDate(new Date().getDate() + 7)));
-};
-
-// is a given date in next month range?
-is.inNextMonth = function(obj) {
-    return is.inDateRange(obj, new Date(), new Date(new Date().setMonth(new Date().getMonth() + 1)));
-};
-
-// is a given date in next year range?
-is.inNextYear = function(obj) {
-    return is.inDateRange(obj, new Date(), new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
-};
-
-// is a given date in the parameter quarter?
-is.quarterOfYear = function(obj, quarterNumber) {
-    return is.date(obj) && is.number(quarterNumber) && quarterNumber === Math.floor((obj.getMonth() + 3) / 3);
-};
-// quarterOfYear method does not support 'all' and 'any' interfaces
-is.quarterOfYear.api = ['not'];
-
-// is a given date in daylight saving time?
-is.dayLightSavingTime = function(obj) {
-    var january = new Date(obj.getFullYear(), 0, 1);
-    var july = new Date(obj.getFullYear(), 6, 1);
-    var stdTimezoneOffset = Math.max(january.getTimezoneOffset(), july.getTimezoneOffset());
-    return obj.getTimezoneOffset() < stdTimezoneOffset;
-};
+module.exports = {
+  day: day,
+  today: today,
+  yesterday: yesterday,
+  tomorrow: tomorrow,
+  month: month,
+  year: year,
+  past: past,
+  future: future,
+  weekend: weekend,
+  weekday: weekday
+}
