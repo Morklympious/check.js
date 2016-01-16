@@ -1,17 +1,35 @@
-var u = require('./is-utilities.js'),
-    type = u.type,
-    types = u.types;
+var types = {
+  'object':    '[object Object]',
+  'array':     '[object Array]',
+  'string':    '[object String]',
+  'boolean':   '[object Boolean]',
+  'number':    '[object Number]',
+  'regex':     '[object RegExp]',
+  'date':      '[object Date]',
+  'error':     '[object Error]',
+  '_undefined': '[object Undefined]',
+  '_null':      '[object Null]',
+  '_function':  '[object Function]',
+  '_arguments': '[object Arguments]'
+};
+
+// Type checking function
+function type(value, expect) {
+  var formed = Object.prototype.toString.call(value);
+  return expect ? formed === expect : formed;
+}
 
 function object(value) {
-  return type(value) === types.object;
+  return type(value, types.object);
 }
 
 function array(value) {    // check native isArray first
-  return Array.isArray ? Array.isArray(value) : type(value) === types.array;
+  var native = Array.isArray;
+  return native ? native(value) : type(value, types.array);
 }
 
 function string(value) {
-    return type(value) === types.string;
+    return type(value, types.string);
 }
 
 function char(value) {
@@ -20,37 +38,37 @@ function char(value) {
 
 // is a given value function?
 function fn(value) {    // fallback check is for IE
-  return type(value) === types._function;
+  return type(value, types._function);
 }
 
 // is a given value Boolean?
 function boolean(value) {
-  return type(value) === types.boolean;
+  return type(value, types.boolean);
 }
 
 //
 function number(value) {
-  return type(value) === types.number;
+  return type(value, types.number);
 }
 
 // is a given value RegExp?
 function regexp(value) {
-  return type(value) === types.regexp;
+  return type(value, types.regexp);
 }
 
 // is a given value Date Object?
 function date(value) {
-  return type(value) === types.date;
+  return type(value, types.date);
 }
 
 // is a given value Error object?
 function error(value) {
-  return type(value) === types.error;
+  return type(value, types.error);
 }
 
 // is a given value Arguments?
 function arguments(value) {    // fallback check is for IE
-  return object(value) && type(value) === types['arguments'];
+  return object(value) && type(value, types._arguments);
 }
 
 function nan(value) {
@@ -58,11 +76,11 @@ function nan(value) {
 }
 
 function _null(value) {
-  return type(value) === types._null;
+  return type(value, types._null);
 }
 
 function _undefined(value) {
-  return type(value) === types._undefined;
+  return type(value, types._undefined);
 }
 
 function json(value) {
@@ -70,6 +88,8 @@ function json(value) {
 }
 
 module.exports = {
+  types: types,
+  type: type,
   object: object,
   array: array,
   string: string,

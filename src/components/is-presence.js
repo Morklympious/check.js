@@ -1,14 +1,14 @@
 var util = require('./is-utilities.js'),
-    type = util.type
-    types = util.types,
-    not = util.not;
-    nan = util.nan;
-
+    not = util.not,
+    nan = util.nan,
+    isType = require('./is-type.js'),
+    type = isType.type,
+    types = isType.types;
 
 function exists(value) {
   var isnt = {
-    _null: not(type(value) === types._null),
-    _undefined: not(type(value) === types._undefined)
+    _null: not(type(value, types._null)),
+    _undefined: not(type(value, types._undefined))
   }
   return isnt._null && isnt._undefined;
 }

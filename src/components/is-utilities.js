@@ -1,22 +1,3 @@
-var types = {
-  'object':    '[object Object]',
-  'array':     '[object Array]',
-  'string':    '[object String]',
-  'boolean':   '[object Boolean]',
-  'number':    '[object Number]',
-  'regex':     '[object RegExp]',
-  'date':      '[object Date]',
-  'error':     '[object Error]',
-  '_undefined': '[object Undefined]',
-  '_null':      '[object Null]',
-  '_function':  '[object Function]'
-};
-
-// TODO: Handle array of args for ease of writing
-function type(value) {
-  return Object.prototype.toString.call(value);
-}
-
 function not(value) {
   return !value;
 }
@@ -39,8 +20,6 @@ function any(func) {
 
 
 module.exports = {
-  type: type,
-  types: types,
   not: not,
   all: all,
   any: any

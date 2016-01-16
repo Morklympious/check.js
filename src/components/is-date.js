@@ -1,4 +1,9 @@
-var test = require('./is-type.js').date;
+var type = require('./is-type.js'),
+    test = type.date,
+    number = type.number,
+    util = require('./is-utilities.js'),
+    not = util.not;
+
 
 var days = [
   'sunday',
@@ -25,6 +30,10 @@ var months = [
   'december'
 ];
 
+function day(date, target) {
+  return test(date) && target.toLowerCase() === days[date.getDay()];
+}
+
 function today(date) {
   var today = new Date().toDateString();
 
@@ -35,51 +44,43 @@ function yesterday(date) {
   var today = new Date(),
       yesterday = new Date(today.setDate(today.getDate() - 1));
 
-  return test(date) && date.toDateString() === yesterday.toDateString();
+  return test(date) &&  date.toDateString() === yesterday.toDateString();
 }
 
-// is a given date indicate tomorrow?
-is.tomorrow = function(obj) {
-    var now = new Date();
-    var tomorrowString = new Date(now.setDate(now.getDate() + 1)).toDateString();
-    return is.date(obj) && obj.toDateString() === tomorrowString;
-};
+function tomorrow(date) {
+  var today = new Date(),
+      tomorrow = new Date(today.setDate(today.getDate() + 1));
 
-// is a given date past?
-is.past = function(obj) {
-    var now = new Date();
-    return is.date(obj) && obj.getTime() < now.getTime();
-};
+  return test(date) && date.toDateString() === tomorrow.toDateString();
+}
 
-// is a given date future?
-is.future = not(is.past);
+function month(date, target) {
+  return test(date) && target.toLowerCase() === months[date.getMonth()];
+}
 
-// is a given dates day equal given dayString parameter?
-is.day = function(obj, dayString) {
-    return is.date(obj) && dayString.toLowerCase() === days[obj.getDay()];
-};
-// day method does not support 'all' and 'any' interfaces
-is.day.api = ['not'];
+function year(date, target) {
+  return test(date) && number(target) && target === date.getFullYear();
+}
 
-// is a given dates month equal given monthString parameter?
-is.month = function(obj, monthString) {
-    return is.date(obj) && monthString.toLowerCase() === months[obj.getMonth()];
-};
-// month method does not support 'all' and 'any' interfaces
-is.month.api = ['not'];
+// TODO: Add delta? e.g. "Within past three hours"
+function past(date) {
+  var now = new Date();
 
-// is a given dates year equal given year parameter?
-is.year = function(obj, year) {
-    return is.date(obj) && is.number(year) && year === obj.getFullYear();
-};
-// year method does not support 'all' and 'any' interfaces
-is.year.api = ['not'];
+  return test(date) && date.getTime() < now.getTime();
+}
 
-// is the given year a leap year?
-is.leapYear = function(year) {
-    return is.number(year) && ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0);
-};
+//TODO: Add delta? e.g. "Within next hour"
+function future(date) {
+  return not(past(date))
+}
 
+function weekend(date) {
+  return test(date) && [1, 7].indexOf(date.getDay()) > -1;
+}
+
+function weekday(date) {
+  return not(weekend);
+}
 // is a given date weekend?
 // 6: Saturday, 0: Sunday
 is.weekend = function(obj) {
