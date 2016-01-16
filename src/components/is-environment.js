@@ -3,7 +3,8 @@ var util = require('./is-utilities.js'),
     not = util.not;
 
 var w =   _window(window) && window,
-    n =   w && w.navigator;
+    n =   w && w.navigator,
+    p =   n.platform;
 
 
   function touch() {
@@ -14,6 +15,11 @@ var w =   _window(window) && window,
     return n.MaxTouchPoints > 1;
   }
 
+  function geolocation() {
+    return n.geolocation;
+  }
+
+  // Online/Offline Status
   function online() {
     return n.onLine;
   }
@@ -22,6 +28,7 @@ var w =   _window(window) && window,
     return !online();
   }
 
+  // Node/Browse
   function browser() {
     return new Function("return this === window;")();
   }
@@ -30,6 +37,15 @@ var w =   _window(window) && window,
     return new Function("return this === global;")();
   }
 
-  function iPhone() {
-    return n.platform === 'iPhone';
+  // Major Operating Systems
+  function windows() {
+    return p.indexOf('Win');
+  }
+
+  function linux() {
+    return p.indexOf('Linux');
+  }
+
+  function mac() {
+    return p.indexOf('Mac')
   }
