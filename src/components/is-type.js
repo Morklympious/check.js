@@ -1,3 +1,6 @@
+var util = require('./is-utilities.js'),
+    all = util.all;
+
 var types = {
   'object':    '[object Object]',
   'array':     '[object Array]',
@@ -14,11 +17,22 @@ var types = {
 };
 
 // Type checking function
+// TODO: Make 'value' param array, run 'every' to support
+// alias functions being passed multiple params.
+// test(t1, t2, t3, etc);
 function type(value, expect) {
   var formed = Object.prototype.toString.call(value);
-  return expect ? formed === expect : formed;
+  // if value is an array, let's run an every
+  if(array(value)) {
+    return all(value, function(current) {
+      return type(current, expect);
+    })
+  }
+  else return expect ? formed === expect : formed;
+
 }
 
+//
 function object(value) {
   return type(value, types.object);
 }

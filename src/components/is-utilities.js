@@ -2,25 +2,26 @@ function not(value) {
   return !value;
 }
 
-function all(func) {
-    var args = Array.prototype.slice.call(arguments);
-
-    return args.every(function(predicate) {
-      return predicate();
-    });
+function all(collection, func) {
+    return collection.every(func);
 }
 
-function any(func) {
-  var args = Array.prototype.slice.call(arguments);
-
-  return args.some(function(predicate) {
-    return predicate();
-  });
+function some(collection, func) {
+    return collection.some(func);
 }
 
+// Iterating over with a for loop is much more performant for args.
+function argen() {
+  var grievances = [];
+  for(var i = 0, len = arguments.length; i < len; i++) {
+    grievances.push(arguments[i]);
+  }
+  return grievances;
+}
 
 module.exports = {
   not: not,
   all: all,
-  any: any
+  some: some,
+  argen: argen
 }
