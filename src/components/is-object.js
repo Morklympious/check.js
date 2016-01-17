@@ -1,12 +1,13 @@
 var test = require('./is-type.js').object;
 
+var keys = Object.keys;
 // has a given object got parameterized count property?
 function length(obj, count) {
-  return test(obj) && obj.keys().length === count;
+  return test(obj) && keys(obj).length === count;
 }
 
 function empty(obj) {
-  return test(obj) && obj.keys().length === 0;
+  return test(obj) && keys(obj).length === 0;
 }
 
 function contains(obj, prop) {

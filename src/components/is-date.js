@@ -93,7 +93,7 @@ function future(date, delta) {
 }
 
 function weekend(date) {
-  return test(date) && [1, 7].indexOf(date.getDay()) > -1;
+  return test(date) && [0, 6].indexOf(date.getDay()) > -1;
 }
 
 function weekday(date) {

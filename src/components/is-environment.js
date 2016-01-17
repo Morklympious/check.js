@@ -1,5 +1,5 @@
 var util = require('./is-utilities.js'),
-    _window = require('./is-types.js')._window,
+    _window = require('./is-type.js')._window,
     not = util.not;
 
 var w =   _window(window) && window,
@@ -50,7 +50,7 @@ var w =   _window(window) && window,
     return p.indexOf('Mac')
   }
 
-  module.exports {
+  module.exports = {
     touch: touch,
     multitouch: multitouch,
     geolocation: geolocation,

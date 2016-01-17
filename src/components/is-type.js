@@ -1,15 +1,13 @@
-var util = require('./is-utilities.js'),
-    all = util.all;
 
 var types = {
-  'object':    '[object Object]',
-  'array':     '[object Array]',
-  'string':    '[object String]',
-  'boolean':   '[object Boolean]',
-  'number':    '[object Number]',
-  'regex':     '[object RegExp]',
-  'date':      '[object Date]',
-  'error':     '[object Error]',
+  'object':     '[object Object]',
+  'array':      '[object Array]',
+  'string':     '[object String]',
+  'boolean':    '[object Boolean]',
+  'number':     '[object Number]',
+  'regex':      '[object RegExp]',
+  'date':       '[object Date]',
+  'error':      '[object Error]',
   '_undefined': '[object Undefined]',
   '_null':      '[object Null]',
   '_function':  '[object Function]',
@@ -18,18 +16,9 @@ var types = {
 
 // Type checking function
 // TODO: Make 'value' param array, run 'every' to support
-// alias functions being passed multiple params.
-// test(t1, t2, t3, etc);
 function type(value, expect) {
   var formed = Object.prototype.toString.call(value);
-  // if value is an array, let's run an every
-  if(array(value)) {
-    return all(value, function(current) {
-      return type(current, expect);
-    })
-  }
-  else return expect ? formed === expect : formed;
-
+  return expect ? formed === expect : formed;
 }
 
 //
@@ -101,12 +90,20 @@ function json(value) {
   // Not currently Implemented
 }
 
+// Special use case for Promises,
+// The A+ spec says anything with a .then()
+// is acceptable as a promise.
+function promise(value) {
+  return !!value.then && _function(value.then, types._function);
+}
+
 module.exports = {
   types: types,
   type: type,
   object: object,
   array: array,
   string: string,
+  char: char,
   fn: fn,
   boolean: boolean,
   number: number,
@@ -118,5 +115,5 @@ module.exports = {
   _null: _null,
   _undefined: _undefined,
   json: json,
-  char: char
+  promise: promise
 };

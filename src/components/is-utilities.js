@@ -12,11 +12,11 @@ function some(collection, func) {
 
 // Iterating over with a for loop is much more performant for args.
 function argen() {
-  var grievances = [];
+  var params = [];
   for(var i = 0, len = arguments.length; i < len; i++) {
-    grievances.push(arguments[i]);
+    params.push(arguments[i]);
   }
-  return grievances;
+  return params;
 }
 
 module.exports = {
