@@ -1,5 +1,5 @@
-var util = require('./is-utilities.js'),
-    test = require('./is-type.js').number
+var util = require('./utilities.js'),
+    test = require('./type.js').number
     not = util.not,
     nan = util.nan,
 

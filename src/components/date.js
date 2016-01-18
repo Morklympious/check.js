@@ -1,7 +1,7 @@
-var type = require('./is-type.js'),
+var type = require('./type.js'),
     test = type.date,
     number = type.number,
-    util = require('./is-utilities.js'),
+    util = require('./utilities.js'),
     not = util.not;
 
 
@@ -30,12 +30,6 @@ var months = [
   'december'
 ];
 
-//Milliseconds
-var lengths = {
-  day: 86400000,
-  week: 86400000 * 7,
-  month: 86400000 * 7 * 4
-}
 
 function day(date, target) {
   return test(date) && target.toLowerCase() === days[date.getDay()];

@@ -1,7 +1,7 @@
 {
-  "name": "is_js",
-  "version": "0.7.6",
-  "main": "is.js",
+  "name": "checkered",
+  "version": "0.1.0",
+  "main": "checkered.js",
   "license": "MIT",
   "description": "micro check library",
   "repository": {

@@ -10,7 +10,8 @@ function some(collection, func) {
     return collection.some(func);
 }
 
-// Iterating over with a for loop is much more performant for args.
+// Iterating over with a for loop is much more performant for args
+// apparently V8 can't optimize [].prototype.slice.call();
 function argen() {
   var params = [];
   for(var i = 0, len = arguments.length; i < len; i++) {

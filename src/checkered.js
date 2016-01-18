@@ -1,5 +1,5 @@
-// is.js 0.7.6 (fork by Bradley Stafford)
-// Author: Aras Atasaygin
+// checkered.js (fork of 'is.js' by Bradley Stafford)
+// Author: Bradley Stafford
 
 var library = {
   utilities:  require('./components/is-utilities.js'),

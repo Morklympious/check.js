@@ -1,10 +1,13 @@
 # is.js
 
-A micro checking library. (_Originally by Aras Atasaygin_)
-I'm bastardizing it and making it smaller to acommodate more common use-cases.
+A micro checking library. (less than 5kb)
+I'm bastardizing it and making it smaller to accommodate more common use-cases.
 
-Fork by Bradley Stafford.
+Author: Bradley Stafford.
+(_Originally by Aras Atasaygin_)
 
 ##This is a general-purpose check library.
 - No dependencies
-- AMD, Node & browser ready
+- Node and Browser ready
+- Written with Commonjs modules, output by Webpack
+- Written to be micro (less than 5kb) because I wanted to challenge myself to do it!

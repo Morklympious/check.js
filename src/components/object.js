@@ -1,4 +1,4 @@
-var test = require('./is-type.js').object;
+var test = require('./type.js').object;
 
 var keys = Object.keys;
 // has a given object got parameterized count property?

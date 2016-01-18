@@ -1,4 +1,5 @@
 
+
 var types = {
   'object':     '[object Object]',
   'array':      '[object Array]',
@@ -16,12 +17,11 @@ var types = {
 
 // Type checking function
 // TODO: Make 'value' param array, run 'every' to support
-function type(value, expect) {
+function type(values, expect) {
   var formed = Object.prototype.toString.call(value);
   return expect ? formed === expect : formed;
 }
 
-//
 function object(value) {
   return type(value, types.object);
 }

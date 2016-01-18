@@ -1,5 +1,5 @@
-var util = require('./is-utilities.js'),
-    _window = require('./is-type.js')._window,
+var util = require('./utilities.js'),
+    _window = require('./type.js')._window,
     not = util.not;
 
 var w =   _window(window) && window,

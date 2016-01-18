@@ -1,7 +1,7 @@
-var util = require('./is-utilities.js'),
+var util = require('./utilities.js'),
     not = util.not,
     nan = util.nan,
-    isType = require('./is-type.js'),
+    isType = require('./type.js'),
     type = isType.type,
     types = isType.types;
 
