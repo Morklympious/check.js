@@ -1,7 +1,7 @@
-# is.js
+# checkered.js
 
 A micro checking library. (less than 5kb)
-I'm bastardizing it and making it smaller to accommodate more common use-cases.
+Originally forked from [is.js](https://arasatasaygin.github.io/is.js/), I'm making it smaller because I want to be able to put it onto [microjs](http://microjs.com/) because I'm some kind of child who just WANTS that. 
 
 Author: Bradley Stafford.
 (_Originally by Aras Atasaygin_)
