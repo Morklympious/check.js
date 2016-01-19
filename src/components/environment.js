@@ -1,10 +1,10 @@
 var util = require('./utilities.js'),
-    _window = require('./type.js')._window,
+    _window = require('./object.js')._window,
     not = util.not;
 
 var w =   _window(window) && window,
-    n =   w && w.navigator,
-    p =   n.platform;
+    n =   w && w.navigator;
+    // p =   n.platform;
 
 
   function touch() {

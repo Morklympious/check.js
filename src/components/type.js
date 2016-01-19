@@ -1,4 +1,5 @@
-
+var util = require('./utilities.js'),
+    forge = util.forge;
 
 var types = {
   'object':     '[object Object]',
@@ -17,10 +18,15 @@ var types = {
 
 // Type checking function
 // TODO: Make 'value' param array, run 'every' to support
-function type(values, expect) {
+function type(expect, value) {
   var formed = Object.prototype.toString.call(value);
   return expect ? formed === expect : formed;
 }
+
+//TODO: Set every viable fn up with partial application
+// for dat sweet filesize.
+//var object = forge(type, types.object);
+
 
 function object(value) {
   return type(value, types.object);
@@ -70,7 +76,7 @@ function error(value) {
 }
 
 // is a given value Arguments?
-function arguments(value) {    // fallback check is for IE
+function arguments(value) {
   return object(value) && type(value, types._arguments);
 }
 

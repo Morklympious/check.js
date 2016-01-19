@@ -1,7 +1,7 @@
 var util = require('./utilities.js'),
     test = require('./type.js').number
     not = util.not,
-    nan = util.nan,
+    nan = util.nan;
 
 
 

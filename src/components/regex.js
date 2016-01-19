@@ -1,4 +1,4 @@
-var types = require('./is-type.js'),
+var types = require('./type.js'),
     test = types.regexp;
 
 // Ripped from
@@ -13,6 +13,7 @@ var patterns = {
   ip: /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
 }
 
+//TODO: swap params? Seems inconsistent with is-types.
 function pattern(regexp, test) {
   return test(regexp) && regexp.test(test);
 }

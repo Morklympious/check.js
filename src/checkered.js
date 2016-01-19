@@ -2,17 +2,17 @@
 // Author: Bradley Stafford
 
 var library = {
-  utilities:  require('./components/is-utilities.js'),
-  object:     require('./components/is-object.js'),
-  presence:   require('./components/is-presence.js'),
-  string:     require('./components/is-string.js'),
-  type:       require('./components/is-type.js'),
-  date:       require('./components/is-date.js'),
-  environment:require('./components/is-environment.js'),
-  array:      require('./components/is-array.js'),
-  number:     requite('./components/is-number.js'),
-  regex:      require('./components/is-regex.js'),
-  string:     require('./components/is-string.js')
+  utilities:  require('./components/utilities.js'),
+  object:     require('./components/object.js'),
+  presence:   require('./components/existence.js'),
+  string:     require('./components/string.js'),
+  type:       require('./components/type.js'),
+  date:       require('./components/date.js'),
+  environment:require('./components/environment.js'),
+  array:      require('./components/array.js'),
+  number:     require('./components/number.js'),
+  regex:      require('./components/regex.js'),
+
 }
 
 global.see = {

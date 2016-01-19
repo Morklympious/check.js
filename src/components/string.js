@@ -1,4 +1,4 @@
-var test = require('./is-type.js').string
+var test = require('./type.js').string
 
 function includes(str, sub) {
     return test(str) && str.indexOf(sub) > -1;
