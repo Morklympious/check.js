@@ -1,4 +1,4 @@
-// checkered.js (fork of 'is.js' by Bradley Stafford)
+// check.js (fork of 'is.js' by Bradley Stafford)
 // Author: Bradley Stafford
 
 var library = {
@@ -12,18 +12,6 @@ var library = {
   array:      require('./components/array.js'),
   number:     require('./components/number.js'),
   regex:      require('./components/regex.js'),
-
 }
-
-global.see = {
-  if: library
-}
-
-global.check = {
-  if: library,
-  for: library,
-  that: library
-}
-
-
+global.check = library
 module.exports = library;

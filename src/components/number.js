@@ -10,7 +10,7 @@ function equal(nOne, nTwo) {
 }
 
 function even(num) {
-  // If modulo is 0, bang will make it true.
+  // If modulo is 0, not will make it true.
   return test(num) && not(num % 2);
 }
 
@@ -35,7 +35,7 @@ function lower(num, threshold) {
 }
 
 function within(num, min, max) {
-  return higher(num, min) && lower(num, max);
+  return (test(num) && test(min) && test(max)) && (min < num < max);
 }
 
 function decimal(num) {

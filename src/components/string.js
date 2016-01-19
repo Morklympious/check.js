@@ -24,6 +24,10 @@ function empty(str) {
   return test(str) && str.length === 0;
 }
 
+var string = {
+
+}
+
 module.exports = {
   includes: includes,
   caps: caps,

@@ -1,7 +1,7 @@
 var test = require('./type.js').object;
 
 var keys = Object.keys;
-// has a given object got parameterized count property?
+
 function length(obj, count) {
   return test(obj) && keys(obj).length === count;
 }

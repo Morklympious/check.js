@@ -8,8 +8,8 @@ function empty(collection) {
   return test(collection) && collection.length === 0;
 }
 
-function sorted(collection) {
-  return test(collection) && collection.reduce(function(previous, current){
+function sorted(collection, fn) {
+  return test(collection) && collection.reduce(fn||function(previous, current){
     return current >= previous;
-  })
+  });
 }

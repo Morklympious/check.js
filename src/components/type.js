@@ -16,11 +16,10 @@ var types = {
   '_arguments': '[object Arguments]'
 };
 
-// Type checking function
-// TODO: Make 'value' param array, run 'every' to support
-function type(expect, value) {
-  var formed = Object.prototype.toString.call(value);
-  return expect ? formed === expect : formed;
+
+function type(expected, actual) {
+  var formed = Object.prototype.toString.call(actual);
+  return expected ? formed === expected : formed;
 }
 
 //TODO: Set every viable fn up with partial application
@@ -45,39 +44,32 @@ function char(value) {
   return string(value) && value.length === 1;
 }
 
-// is a given value function?
-function fn(value) {    // fallback check is for IE
-  return type(value, types._function);
+function fn(value) {
+  return type(types._function, value);
 }
 
-// is a given value Boolean?
 function boolean(value) {
-  return type(value, types.boolean);
+  return type(types.boolean, value);
 }
 
-//
 function number(value) {
-  return type(value, types.number);
+  return type(types.number, value);
 }
 
-// is a given value RegExp?
 function regexp(value) {
-  return type(value, types.regexp);
+  return type(types.regexp, value);
 }
 
-// is a given value Date Object?
 function date(value) {
-  return type(value, types.date);
+  return type(types.date, value);
 }
 
-// is a given value Error object?
 function error(value) {
-  return type(value, types.error);
+  return type(types.error, value);
 }
 
-// is a given value Arguments?
 function arguments(value) {
-  return object(value) && type(value, types._arguments);
+  return object(value) && type(types._arguments, value);
 }
 
 function nan(value) {
@@ -85,11 +77,11 @@ function nan(value) {
 }
 
 function _null(value) {
-  return type(value, types._null);
+  return type(types._null, value);
 }
 
 function _undefined(value) {
-  return type(value, types._undefined);
+  return type(types._undefined, value);
 }
 
 function json(value) {
@@ -100,7 +92,7 @@ function json(value) {
 // The A+ spec says anything with a .then()
 // is acceptable as a promise.
 function promise(value) {
-  return !!value.then && _function(value.then, types._function);
+  return !!value.then && _function(types._function, value.then);
 }
 
 module.exports = {

@@ -14,36 +14,36 @@ var patterns = {
 }
 
 //TODO: swap params? Seems inconsistent with is-types.
-function pattern(regexp, test) {
+function pattern(test, regexp) {
   return test(regexp) && regexp.test(test);
 }
 
 function username(test) {
-  return pattern(patterns.username, test);
+  return pattern(test, patterns.username);
 }
 
 function password(test) {
-  return pattern(patterns.password, test);
+  return pattern(test, patterns.password);
 }
 
 function hex(test) {
-  return pattern(patterns.hex, test)
+  return pattern(test, patterns.hex)
 }
 
 function slug(test) {
-  return pattern(patterns.slug, test);
+  return pattern(test, patterns.slug);
 }
 
 function email(test) {
-  return pattern(patterns.email, test)
+  return pattern(test, patterns.email)
 }
 
 function url(test) {
-  return pattern(patterns.url, test);
+  return pattern(test, patterns.url);
 }
 
 function ip(test) {
-  return pattern(patterns.ip, test);
+  return pattern(test, patterns.ip);
 }
 
 module.exports = {

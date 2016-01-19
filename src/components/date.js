@@ -2,7 +2,8 @@ var type = require('./type.js'),
     test = type.date,
     number = type.number,
     util = require('./utilities.js'),
-    not = util.not;
+    not = util.not,
+    all = util.all;
 
 
 var days = [
@@ -99,8 +100,8 @@ function within(date, start, end) {
   var starting = start.getTime(),
       chosen = date.getTime(),
       ending = end.getTime();
-
-  return test(date) && test(start) && test(end) && starting <= chosen <= ending;
+      console.log(starting < chosen < ending);
+  return /*all([date, start, end], test) && */ starting <= chosen <= ending;
 }
 
 module.exports = {
@@ -113,5 +114,6 @@ module.exports = {
   past: past,
   future: future,
   weekend: weekend,
-  weekday: weekday
+  weekday: weekday,
+  within: within
 }

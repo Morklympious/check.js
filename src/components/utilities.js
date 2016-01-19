@@ -3,7 +3,7 @@ function not(value) {
 }
 
 function all(collection, func) {
-    return collection.every(func);
+    return func ? collection.every(func) : collection.every(_reflect);
 }
 
 function some(collection, func) {
@@ -17,10 +17,18 @@ function forge(fn) {
   }
 }
 
-// Iterating over with a for loop is much more performant for args
-// apparently V8 can't optimize [].prototype.slice.call();
 function argen(args) {
   return Array.prototype.slice.call(args);
+}
+
+// Signature make(fn, fnarg1, fnarg2, ... fnargn)
+function make(fn) {
+  var args = argen(arguments)
+  return forge.apply(null, args);
+}
+
+function _reflect(predicate) {
+  return !!predicate;
 }
 
 module.exports = {

@@ -6,7 +6,6 @@ var w =   _window(window) && window,
     n =   w && w.navigator;
     // p =   n.platform;
 
-
   function touch() {
     return n.MaxTouchPoints > 0;
   }
