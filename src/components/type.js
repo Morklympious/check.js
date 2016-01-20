@@ -28,23 +28,23 @@ function type(expected, actual) {
 
 
 function object(value) {
-  return type(value, types.object);
+  return type(types.object, value );
 }
 
 function array(value) {    // check native isArray first
   var native = Array.isArray;
-  return native ? native(value) : type(value, types.array);
+  return native ? native(value) : type(types.array, value);
 }
 
 function string(value) {
-    return type(value, types.string);
+    return type(types.string, value);
 }
 
 function char(value) {
   return string(value) && value.length === 1;
 }
 
-function fn(value) {
+function _function(value) {
   return type(types._function, value);
 }
 
@@ -69,7 +69,7 @@ function error(value) {
 }
 
 function arguments(value) {
-  return object(value) && type(types._arguments, value);
+  return type(types._arguments, value);
 }
 
 function nan(value) {
@@ -85,14 +85,14 @@ function _undefined(value) {
 }
 
 function json(value) {
-  // Not currently Implemented
+  return !!JSON.parse(value);
 }
 
 // Special use case for Promises,
 // The A+ spec says anything with a .then()
 // is acceptable as a promise.
 function promise(value) {
-  return !!value.then && _function(types._function, value.then);
+  return !!value.then && _function(value.then);
 }
 
 module.exports = {
@@ -102,7 +102,7 @@ module.exports = {
   array: array,
   string: string,
   char: char,
-  fn: fn,
+  _function: _function,
   boolean: boolean,
   number: number,
   regexp: regexp,

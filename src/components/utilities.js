@@ -22,6 +22,7 @@ function argen(args) {
 }
 
 // Signature make(fn, fnarg1, fnarg2, ... fnargn)
+// for composing your own checks.
 function make(fn) {
   var args = argen(arguments)
   return forge.apply(null, args);

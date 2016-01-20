@@ -4,17 +4,18 @@
   "main": "checkered.js",
   "license": "MIT",
   "description": "Micro-sized check library",
-  "scripts" : {
+  "scripts": {
     "build": "browserify  src/check.js -o build/bundle.js",
     "watch": "watchify src/check.js -o build/bundle.js --verbose"
   },
-  "repository": {
-  },
+  "repository": {},
   "bugs": {
     "url": "https://github.com/arasatasaygin/is.js/issues"
   },
   "homepage": "https://github.com/arasatasaygin/is.js",
   "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
     "webpack": "^1.12.11"
   }
 }
