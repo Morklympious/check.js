@@ -100,7 +100,7 @@ function within(date, start, end) {
   var starting = start.getTime(),
       chosen = date.getTime(),
       ending = end.getTime();
-      console.log(starting < chosen < ending);
+
   return /*all([date, start, end], test) && */ starting <= chosen <= ending;
 }
 

@@ -3,8 +3,6 @@ var util = require('./utilities.js'),
     not = util.not,
     nan = util.nan;
 
-
-
 function equal(nOne, nTwo) {
   return test(nOne) && test(nTwo) && one === two;
 }
