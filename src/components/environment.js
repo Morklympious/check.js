@@ -4,7 +4,7 @@ var util = require('./utilities.js'),
 
 var w =   _window(window) && window,
     n =   w && w.navigator;
-    // p =   n.platform;
+    p =   n.platform;
 
   function touch() {
     return n.MaxTouchPoints > 0;
