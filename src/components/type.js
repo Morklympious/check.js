@@ -22,72 +22,31 @@ function type(expected, actual) {
   return expected ? formed === expected : formed;
 }
 
-//TODO: Set every viable fn up with partial application
-// for dat sweet filesize.
-//var object = forge(type, types.object);
-
-
-function object(value) {
-  return type(types.object, value );
-}
-
-function array(value) {    // check native isArray first
-  var native = Array.isArray;
-  return native ? native(value) : type(types.array, value);
-}
-
-function string(value) {
-    return type(types.string, value);
-}
+var object      = forge(type, types.object),
+    array       = Array.isArray || forge(type, types.array),
+    string      = forge(type, types.string),
+    _function   = forge(type, types._function),
+    boolean     = forge(type, types.boolean),
+    number      = forge(type, types.number),
+    regexp      = forge(type, types.regexp),
+    date        = forge(type, types.date),
+    error       = forge(type, types.error),
+    arguments   = forge(type, types.arguments),
+    _null       = forge(type, types._null),
+    _undefined  = forge(type, types._undefined);
 
 function char(value) {
   return string(value) && value.length === 1;
 }
 
-function _function(value) {
-  return type(types._function, value);
-}
-
-function boolean(value) {
-  return type(types.boolean, value);
-}
-
-function number(value) {
-  return type(types.number, value);
-}
-
-function regexp(value) {
-  return type(types.regexp, value);
-}
-
-function date(value) {
-  return type(types.date, value);
-}
-
-function error(value) {
-  return type(types.error, value);
-}
-
-function arguments(value) {
-  return type(types._arguments, value);
-}
 
 function nan(value) {
   return number(value) && value.toString() === 'NaN';
 }
 
-function _null(value) {
-  return type(types._null, value);
-}
-
-function _undefined(value) {
-  return type(types._undefined, value);
-}
-
 function json(value) {
   return !!JSON.parse(value);
 }
-
 // Special use case for Promises,
 // The A+ spec says anything with a .then()
 // is acceptable as a promise.
