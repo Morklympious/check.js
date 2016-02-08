@@ -1,5 +1,7 @@
 var types = require('./type.js'),
     test = types.regexp;
+    util = require('./utilities'),
+    forge = util.forge
 
 // Ripped from
 // code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149
@@ -13,38 +15,17 @@ var patterns = {
   ip: /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
 }
 
-//TODO: swap params? Seems inconsistent with is-types.
-function pattern(test, regexp) {
-  return test(regexp) && regexp.test(test);
+function pattern(expected, actual) {
+  return test(regexp) && expected.test(actual);
 }
 
-function username(test) {
-  return pattern(test, patterns.username);
-}
-
-function password(test) {
-  return pattern(test, patterns.password);
-}
-
-function hex(test) {
-  return pattern(test, patterns.hex)
-}
-
-function slug(test) {
-  return pattern(test, patterns.slug);
-}
-
-function email(test) {
-  return pattern(test, patterns.email)
-}
-
-function url(test) {
-  return pattern(test, patterns.url);
-}
-
-function ip(test) {
-  return pattern(test, patterns.ip);
-}
+var username = forge(pattern, patterns.username),
+    password = forge(pattern, patterns.password),
+    hex      = forge(pattern, patterns.hex),
+    slug     = forge(pattern, patterns.slug),
+    email    = forge(pattern, patterns.email),
+    url      = forge(pattern, patterns.url),
+    ip       = forge(pattern, patterns.ip);
 
 module.exports = {
   pattern: pattern,

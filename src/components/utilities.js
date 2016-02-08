@@ -2,8 +2,8 @@ function not(value) {
   return !value;
 }
 
-function all(collection, func) {
-    return func ? collection.every(func) : collection.every(_reflect);
+function all(collection, fn) {
+    return collection.every(fn || _reflect);
 }
 
 function some(collection, func) {
