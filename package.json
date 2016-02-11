@@ -10,9 +10,9 @@
   },
   "repository": {},
   "bugs": {
-    "url": "https://github.com/arasatasaygin/is.js/issues"
+    "url": "https://github.com/morklympious/check.js/issues"
   },
-  "homepage": "https://github.com/arasatasaygin/is.js",
+  "homepage": "",
   "devDependencies": {
     "chai": "^3.4.1",
     "mocha": "^2.3.4",
