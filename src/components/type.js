@@ -39,7 +39,6 @@ function char(value) {
   return string(value) && value.length === 1;
 }
 
-
 function nan(value) {
   return number(value) && value.toString() === 'NaN';
 }

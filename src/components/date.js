@@ -32,25 +32,25 @@ var months = [
 ];
 
 
-function day(date, target) {
-  return test(date) && target.toLowerCase() === days[date.getDay()];
+function day(date, day) {
+  return test(date) && day.toLowerCase() === days[date.getDay()];
 }
 
 function today(date) {
   var today = new Date().toDateString();
 
-  return test(date) && today === obj.toDateString();
+  return test(date) && today === date.toDateString();
 }
 
 function yesterday(date) {
-  var today = new Date(),
+  var today     = new Date(),
       yesterday = new Date(today.setDate(today.getDate() - 1));
 
   return test(date) &&  date.toDateString() === yesterday.toDateString();
 }
 
 function tomorrow(date) {
-  var today = new Date(),
+  var today    = new Date(),
       tomorrow = new Date(today.setDate(today.getDate() + 1));
 
   return test(date) && date.toDateString() === tomorrow.toDateString();
@@ -72,18 +72,15 @@ function past(date, delta) {
       current = now.getTime(),
       dTime = date.getTime();
 
-  // if date.getTime() > now.getTime() - delta === true
   return test(date) && ((current - delta) < dTime < current) || dTime < current;
 }
 
-//TODO: Add delta? e.g. "Within next hour"
 function future(date, delta) {
   var now = new Date(),
       delta = delta || 0,
       current = now.getTime(),
       dTime = date.getTime();
 
-  // if date.getTime() > now.getTime() - delta === true
   return test(date) && (current < dTime < (current + delta)) || current < dTime;
 }
 
@@ -98,10 +95,10 @@ function weekday(date) {
 // date is within date range
 function within(date, start, end) {
   var starting = start.getTime(),
-      chosen = date.getTime(),
-      ending = end.getTime();
+      chosen   = date.getTime(),
+      ending   = end.getTime();
 
-  return /*all([date, start, end], test) && */ starting <= chosen <= ending;
+  return starting <= chosen <= ending;
 }
 
 module.exports = {

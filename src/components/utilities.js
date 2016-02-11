@@ -7,7 +7,7 @@ function all(collection, fn) {
 }
 
 function some(collection, func) {
-    return collection.some(func);
+    return collection.some(func || _reflect);
 }
 
 function forge(fn) {
