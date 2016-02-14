@@ -13,3 +13,9 @@ function sorted(collection, fn) {
     return curr >= prev;
   });
 }
+
+module.exports = {
+  contains: contains,
+  empty: empty,
+  sorted: sorted
+}
