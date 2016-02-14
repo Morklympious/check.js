@@ -31,7 +31,7 @@ var object      = forge(type, types.object),
     regexp      = forge(type, types.regexp),
     date        = forge(type, types.date),
     error       = forge(type, types.error),
-    arguments   = forge(type, types.arguments),
+    arguments   = forge(type, types._arguments),
     _null       = forge(type, types._null),
     _undefined  = forge(type, types._undefined);
 

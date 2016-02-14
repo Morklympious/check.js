@@ -19,21 +19,13 @@ function pattern(expected, actual) {
   return test(regexp) && expected.test(actual);
 }
 
-var username = forge(pattern, patterns.username),
-    password = forge(pattern, patterns.password),
-    hex      = forge(pattern, patterns.hex),
-    slug     = forge(pattern, patterns.slug),
-    email    = forge(pattern, patterns.email),
-    url      = forge(pattern, patterns.url),
-    ip       = forge(pattern, patterns.ip);
-
 module.exports = {
-  pattern: pattern,
-  username: username,
-  password: password,
-  hex: hex,
-  slug: slug,
-  email: email,
-  url: url,
-  ip: ip
+  pattern:  pattern,
+  username: forge(pattern, patterns.username),
+  password: forge(pattern, patterns.password),
+  hex:      forge(pattern, patterns.hex),
+  slug:     forge(pattern, patterns.slug),
+  email:    forge(pattern, patterns.email),
+  url:      forge(pattern, patterns.url),
+  ip:       forge(pattern, patterns.ip)
 }

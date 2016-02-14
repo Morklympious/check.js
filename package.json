@@ -6,7 +6,8 @@
   "description": "Micro-sized check library",
   "scripts": {
     "build": "browserify  src/check.js -o build/bundle.js",
-    "watch": "watchify src/check.js -o build/bundle.js --verbose"
+    "watch": "watchify src/check.js -o build/bundle.js --verbose",
+    "test": "mocha"
   },
   "repository": {},
   "bugs": {
@@ -14,8 +15,8 @@
   },
   "homepage": "",
   "devDependencies": {
-    "chai": "^3.4.1",
-    "mocha": "^2.3.4",
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
     "webpack": "^1.12.11"
   }
 }

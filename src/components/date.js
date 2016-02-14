@@ -46,7 +46,7 @@ function yesterday(date) {
   var today     = new Date(),
       yesterday = new Date(today.setDate(today.getDate() - 1));
 
-  return test(date) &&  date.toDateString() === yesterday.toDateString();
+  return test(date) && date.toDateString() === yesterday.toDateString();
 }
 
 function tomorrow(date) {

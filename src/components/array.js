@@ -9,7 +9,7 @@ function empty(collection) {
 }
 
 function sorted(collection, fn) {
-  return test(collection) && collection.reduce(fn||function(previous, current){
-    return current >= previous;
+  return test(collection) && collection.reduce(fn || function(prev, curr){
+    return curr >= prev;
   });
 }
