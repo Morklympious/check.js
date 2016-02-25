@@ -9,7 +9,9 @@
     "watch": "watchify src/check.js -o build/bundle.js --verbose",
     "test": "mocha"
   },
-  "repository": {},
+  "repository": {
+    "url": "https://github.com/morklympious/check.js"
+  },
   "bugs": {
     "url": "https://github.com/morklympious/check.js/issues"
   },
