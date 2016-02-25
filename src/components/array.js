@@ -8,10 +8,11 @@ function empty(collection) {
   return test(collection) && collection.length === 0;
 }
 
-function sorted(collection, fn) {
+function sorted(collection, fn, start) {
   return test(collection) && collection.reduce(fn || function(prev, curr){
     return curr >= prev;
-  });
+    console.log('curr', curr, 'prev', prev);
+  }, start || 0);
 }
 
 module.exports = {
