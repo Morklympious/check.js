@@ -6,8 +6,8 @@ function all(collection, fn) {
     return collection.every(fn || _reflect);
 }
 
-function some(collection, func) {
-    return collection.some(func || _reflect);
+function some(collection, fn) {
+    return collection.some(fn || _reflect);
 }
 
 function forge(fn) {
@@ -18,7 +18,7 @@ function forge(fn) {
 }
 
 function argen(args) {
-  return Array.prototype.slice.call(args);
+  return [].slice.call(args);
 }
 
 // Signature make(fn, fnarg1, fnarg2, ... fnargn)

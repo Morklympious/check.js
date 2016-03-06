@@ -18,7 +18,7 @@ var types = {
 
 
 function type(expected, actual) {
-  var formed = Object.prototype.toString.call(actual);
+  var formed = {}.toString.call(actual);
   return expected ? formed === expected : formed;
 }
 

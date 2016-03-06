@@ -1,16 +1,13 @@
-var util = require('./utilities.js'),
-    not = util.not,
-    nan = util.nan,
-    isType = require('./type.js'),
-    type = isType.type,
-    types = isType.types;
+var util    = require('./utilities.js'),
+    not     = util.not,
+    nan     = util.nan,
+    type    = require('./type.js'),
+    _null   = type._null,
+    undef   = type._undefined,
+    types   = type.types;
 
 function exists(value) {
-  var isnt = {
-    _null: not(type(value, types._null)),
-    _undefined: not(type(value, types._undefined))
-  }
-  return isnt._null && isnt._undefined;
+  return not(_null(value)) && not(undef(value));
 }
 
 function truthy(value) {
@@ -18,7 +15,7 @@ function truthy(value) {
 }
 
 function falsey(value) {
-  return not(truthy);
+  return not(truthy(value));
 }
 
 module.exports = {

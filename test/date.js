@@ -106,26 +106,31 @@ describe('Date Checking', function() {
   })
 
   describe('past(date, delta)', function() {
-    var past = date.past,
-
+    var past      = date.past,
+        today     = new Date(),
+        yesterday = new Date(today.setDate(today.getDate -1))
+        delta     = (1000*60*60*24) // 1 day
 
     it('should be true if date is in the past within ms delta', function() {
-
+      expect(past(yesterday, delta)).to.be.true;
     })
 
-    it('should be false if date is 4 days ago but ms delta is 3 days', function() {
-
+    it('should be false if date out of delta range', function() {
+      expect(past(yesterday), 100000)).to.be.false;
     })
   })
 
   describe('future(date, delta)', function() {
-    var future = date.future;
+    var future    = date.future
+        today     = new Date(),
+        yesterday = new Date(today.setDate(today.getDate -1))
+        delta     = (1000*60*60*24) // 1 day
   })
 
   describe('weekend(date)', function() {
     var weekend = date.weekend,
-    wednesday = new Date('01/16/1991'),
-    saturday  = new Date('01/18/1991');
+    wednesday   = new Date('01/16/1991'),
+    saturday    = new Date('01/18/1991');
 
     it('Should be true for a weekday', function() {
       expect(weekend(wednesday)).to.be.false;

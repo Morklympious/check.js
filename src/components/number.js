@@ -3,8 +3,8 @@ var util = require('./utilities.js'),
     not = util.not,
     nan = util.nan;
 
-function equal(nOne, nTwo) {
-  return test(nOne) && test(nTwo) && one === two;
+function equal(one, two) {
+  return test(one) && test(two) && one === two;
 }
 
 function even(num) {
