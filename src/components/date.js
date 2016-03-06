@@ -89,7 +89,7 @@ function weekend(date) {
 }
 
 function weekday(date) {
-  return not(weekend);
+  return not(weekend(date));
 }
 
 // date is within date range

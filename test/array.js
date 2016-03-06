@@ -42,21 +42,4 @@ var expect = require('chai').expect,
         })
       });
 
-
-      describe('sorted(collection)', function() {
-        var sorted = array.sorted;
-
-        it('should be a function', function(){
-          expect(sorted).to.be.a('function');
-        });
-
-        it('should return true on sorted array', function() {
-          expect(sorted([1, 2, 3])).to.be.true;
-        })
-
-        it('should return false on unsorted array', function() {
-          expect(sorted([1, 3, 2])).to.be.false;
-        })
-      });
-
     });
