@@ -118,7 +118,7 @@ describe('Date Checking', function() {
     })
 
     it('should be false if date out of delta range', function() {
-      expect(past(yesterday), 100000).to.be.false;
+      expect(past(yesterday, 0)).to.be.false;
     })
   })
 
@@ -133,7 +133,7 @@ describe('Date Checking', function() {
     var weekend = date.weekend,
     wednesday   = new Date('01/16/1991'),
     saturday    = new Date('01/19/1991');
-        console.log(weekend.toString());
+
 
     it('should be false for a weekday', function() {
       expect(weekend(wednesday)).to.be.false;
@@ -149,8 +149,6 @@ describe('Date Checking', function() {
         wednesday = new Date('01/16/1991'),
         saturday  = new Date('01/19/1991');
 
-
-        console.log(weekday.toString());
     it('should be true for a weekday', function() {
       expect(weekday(wednesday)).to.be.true;
     });
