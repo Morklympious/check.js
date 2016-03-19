@@ -39,39 +39,41 @@ describe('Date Checking', function() {
   describe('yesterday(date)', function() {
     var yesterday = date.yesterday,
         now       = new Date(),
-        prior     = new Date(now.setDate(now.getDate -1)),
+        prior     = new Date(now.setDate(now.getDate() -1));
 
 
     it('should be true for yesterday', function() {
-      expect(today(birthday)).to.be.false;
+      expect(yesterday(prior)).to.be.true;
     })
 
     it('should be false for before yesterday', function() {
       var now     = new Date(),
-          daysAgo = new Date(now.setDate(now.getDate() - 4))
+          birthday = new Date('1/16/1991')
 
-      expect(today(daysAgo)).to.be.false
+      expect(yesterday(birthday)).to.be.false
     })
 
     it('should be false after yesterday', function() {
-      expect(today(now)).to.be.false;
+      expect(yesterday(new Date())).to.be.false;
     })
   })
 
   describe('tomorrow(date)', function() {
     var tomorrow  = date.tomorrow,
-        now       = new Date();
+        now       = new Date(),
+        next      = new Date(now.setDate(now.getDate() + 1)),
+        birthday  = new Date('1/16/1991');
 
     it('should be true for future date', function() {
-      expect(today(tomorrow)).to.be.true;
+      expect(tomorrow(next)).to.be.true;
     })
 
     it('should be false if date is today', function() {
-      expect(today(new Date())).to.be.false;
+      expect(tomorrow(new Date())).to.be.false;
     })
 
     it('should be false for past date', function() {
-      expect(today(birthday)).to.be.false;
+      expect(tomorrow(birthday)).to.be.false;
     })
 
 
@@ -116,7 +118,7 @@ describe('Date Checking', function() {
     })
 
     it('should be false if date out of delta range', function() {
-      expect(past(yesterday), 100000)).to.be.false;
+      expect(past(yesterday), 100000).to.be.false;
     })
   })
 
@@ -130,13 +132,14 @@ describe('Date Checking', function() {
   describe('weekend(date)', function() {
     var weekend = date.weekend,
     wednesday   = new Date('01/16/1991'),
-    saturday    = new Date('01/18/1991');
+    saturday    = new Date('01/19/1991');
+        console.log(weekend.toString());
 
-    it('Should be true for a weekday', function() {
+    it('should be false for a weekday', function() {
       expect(weekend(wednesday)).to.be.false;
     });
 
-    it('should be false for a weekend', function() {
+    it('should be true for a weekend', function() {
       expect(weekend(saturday)).to.be.true;
     })
   })
@@ -144,15 +147,17 @@ describe('Date Checking', function() {
   describe('weekday(date)', function() {
     var weekday = date.weekday,
         wednesday = new Date('01/16/1991'),
-        saturday  = new Date('01/18/1991');
+        saturday  = new Date('01/19/1991');
 
-    it('Should be true for a weekday', function() {
+
+        console.log(weekday.toString());
+    it('should be true for a weekday', function() {
       expect(weekday(wednesday)).to.be.true;
     });
 
     it('should be false for a weekend', function() {
       expect(weekday(saturday)).to.be.false;
-    })
+    });
   })
 
   describe('within(date, start, end)', function() {
