@@ -18,7 +18,7 @@ function forge(fn) {
 }
 
 function argen(args) {
-  return [].slice.call(args);
+  return Array.prototype.slice.call(args);
 }
 
 // Signature make(fn, fnarg1, fnarg2, ... fnargn)
