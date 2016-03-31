@@ -1,6 +1,6 @@
 var expect = require('chai').expect,
     date  = require('../src/components/date.js');
-    console.log(date);
+
 describe('Date Checking', function() {
 
   var birthday  = new Date('1/16/1991');
@@ -109,8 +109,9 @@ describe('Date Checking', function() {
   describe('past(date, delta)', function() {
     var past      = date.past,
         today     = new Date(),
-        yesterday = new Date(today.setDate(today.getDate -1))
-        delta     = (1000) // 1 day
+        yesterday = new Date(today.setDate(today.getDate() - 1)),
+        delta     = (1000*60*60*25) // A little over 1 day
+
 
     it('should be true if date is in the past within ms delta', function() {
       expect(past(yesterday, delta)).to.be.true;

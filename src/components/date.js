@@ -71,8 +71,8 @@ function past(date, delta) {
       delta = delta || 0,
       current = now.getTime(),
       dTime = date.getTime();
-
-  return test(date) && ((current - delta) < dTime < current) || dTime < current;
+// now - delta < date passed in < now
+  return test(date) && (((current - delta) < dTime) && (dTime < current));
 }
 
 function future(date, delta) {
@@ -80,8 +80,7 @@ function future(date, delta) {
       delta = delta || 0,
       current = now.getTime(),
       dTime = date.getTime();
-
-  return test(date) && (current < dTime < (current + delta)) || current < dTime;
+  return test(date) && (current < dTime && dTime < (current + delta)) || current < dTime;
 }
 
 function weekend(date) {
