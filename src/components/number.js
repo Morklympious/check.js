@@ -17,7 +17,7 @@ function odd(num) {
 }
 
 function positive(num) {
-  return test(num) && num > 0;
+  return test(num) && not(negative(num))
 }
 
 function negative(num) {
@@ -33,7 +33,7 @@ function lower(num, threshold) {
 }
 
 function within(num, min, max) {
-  return (test(num) && test(min) && test(max)) && (min < num < max);
+  return (test(num) && test(min) && test(max)) && (min < num && num < max);
 }
 
 function decimal(num) {

@@ -5,7 +5,7 @@
   "license": "MIT",
   "description": "Micro-sized check library",
   "scripts": {
-    "build": "browserify  src/check.js -o build/bundle.js",
+    "build": "browserify src/check.js -o build/bundle.js",
     "watch": "watchify src/check.js -o build/bundle.js --verbose",
     "test": "mocha"
   },
