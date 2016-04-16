@@ -98,7 +98,7 @@ function within(date, start, end) {
       chosen   = date.getTime(),
       ending   = end.getTime();
 
-  return starting <= chosen <= ending;
+  return (starting <= chosen) && (chosen <= ending);
 }
 
 module.exports = {
