@@ -11,7 +11,7 @@ function exists(value) {
 }
 
 function truthy(value) {
-  return exists(value) && not(nan(value)) && not("") && not(0);
+  return exists(value) && not(nan(value)) && not(0) && not((value === false));
 }
 
 function falsey(value) {
