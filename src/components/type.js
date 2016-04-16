@@ -20,6 +20,8 @@ var types = {
 function type(expected, actual) {
   var formed = {}.toString.call(actual);
   return expected ? formed === expected : formed;
+
+  // if Actual is an array... Do check on all? 
 }
 
 var object      = forge(type, types.object),
