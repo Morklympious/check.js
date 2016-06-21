@@ -36,23 +36,21 @@ function day(date, name) {
 }
 
 function today(date) {
-  var today = new Date().toDateString();
+  var tdy = new Date().toDateString();
 
-  return test(date) && today === date.toDateString();
+  return test(date) && tdy === date.toDateString();
 }
 
 function yesterday(date) {
-  var today     = new Date(),
-      yesterday = new Date(today.setDate(today.getDate() - 1));
+  var yst = new Date(today.setDate(today.getDate() - 1));
 
-  return test(date) && date.toDateString() === yesterday.toDateString();
+  return test(date) && date.toDateString() === yst.toDateString();
 }
 
 function tomorrow(date) {
-  var today    = new Date(),
-      tomorrow = new Date(today.setDate(today.getDate() + 1));
+  var tmrrw = new Date(today.setDate(today.getDate() + 1));
 
-  return test(date) && date.toDateString() === tomorrow.toDateString();
+  return test(date) && date.toDateString() === tmrrw.toDateString();
 }
 
 function month(date, target) {

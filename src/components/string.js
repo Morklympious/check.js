@@ -25,7 +25,7 @@ function empty(str) {
 }
 
 function contains(str, sub) {
-  return test(str) && test(sub) && ~str.indexOf(sub);
+  return test(str) && test(sub) && str.indexOf(sub) > -1;
 }
 
 module.exports = {
