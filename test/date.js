@@ -158,7 +158,28 @@ describe('Date Checking', function() {
   })
 
   describe('within(date, start, end)', function() {
-    var within = date.within;
+    var within = date.within,
+        birthday = new Date('1/16/1991'),
+        afterward = new Date('1/23/1991');
+
+    it('should be true for date within start/end', function(){
+      var date = new Date('1/18/1991');
+
+      expect(within(date, birthday, afterward)).to.be.true;
+    })
+
+    it('should be false for date past end', function() {
+      var date = new Date('1/27/1991');
+
+      expect(within(date, birthday, afterward)).to.be.false;
+    })
+
+    it('should be false for date before start', function() {
+      var date = new Date('1/14/1991');
+
+      expect(within(date, birthday, afterward)).to.be.false;
+    })
+
   })
 
 })

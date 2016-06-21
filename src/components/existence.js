@@ -1,9 +1,9 @@
 var util    = require('./utilities.js'),
     not     = util.not,
-    nan     = util.nan,
     type    = require('./type.js'),
     _null   = type._null,
     undef   = type._undefined,
+    nan     = type.nan,
     types   = type.types;
 
 function exists(value) {
@@ -11,7 +11,7 @@ function exists(value) {
 }
 
 function truthy(value) {
-  return exists(value) && not(nan(value)) && not("") && not(0);
+  return exists(value) && not(nan(value)) && !!value;
 }
 
 function falsey(value) {

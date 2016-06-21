@@ -4,7 +4,7 @@
 var library = {
   utilities:   require('./components/utilities.js'),
   object:      require('./components/object.js'),
-  presence:    require('./components/existence.js'),
+  existence:    require('./components/existence.js'),
   string:      require('./components/string.js'),
   type:        require('./components/type.js'),
   date:        require('./components/date.js'),

@@ -93,11 +93,12 @@ function weekday(date) {
 
 // date is within date range
 function within(date, start, end) {
+  debugger;
   var starting = start.getTime(),
       chosen   = date.getTime(),
       ending   = end.getTime();
 
-  return starting <= chosen <= ending;
+  return (starting <= chosen) && (chosen <= ending);
 }
 
 module.exports = {
