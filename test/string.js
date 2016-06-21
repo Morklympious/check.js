@@ -4,25 +4,6 @@ var expect = require("chai").expect,
     string  = require("../src/components/string.js");
 
 describe("String Checking", function() {
-  describe("includes(str, sub)", function() {
-    var includes = string.includes;
-
-    it("should be true if sub exists in str", function() {
-      expect(includes("You only live once", " once")).to.be.true;
-      expect(includes("The legendary sax man", "end")).to.be.true;
-    });
-
-    it("should be false id sub doesn't exist in str", function() {
-      expect(includes("You only live once", "twice")).to.be.false;
-      expect(includes("The legendary sax man", "Sergio")).to.be.false;
-    });
-
-    it("should be false for bad types", function() {
-      expect(includes("You only live once", [])).to.be.false;
-      expect(includes("You only live once", {})).to.be.false;
-    });
-  });
-
   describe("caps(str)", function() {
     var caps = string.caps;
 

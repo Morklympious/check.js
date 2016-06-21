@@ -1,9 +1,5 @@
 var test = require("./type.js").string;
 
-function includes(str, sub) {
-    return test(str) && str.indexOf(sub) > -1;
-}
-
 function caps(str) {
    return test(str) && str === str.toUpperCase();
 }
@@ -13,11 +9,11 @@ function lowercase(str) {
 }
 
 function begins(str, sub) {
-  return includes(str, sub) && str.indexOf(sub) === 0;
+  return contains(str, sub) && str.indexOf(sub) === 0;
 }
 
 function ends(str, sub) {
-  return includes(str, sub) && str.indexOf(sub) === (str.length - sub.length);
+  return contains(str, sub) && str.indexOf(sub) === (str.length - sub.length);
 }
 
 function empty(str) {
@@ -29,10 +25,10 @@ function contains(str, sub) {
 }
 
 module.exports = {
-  includes  : includes,
   caps      : caps,
   lowercase : lowercase,
   begins    : begins,
   ends      : ends,
-  empty     : empty
+  empty     : empty,
+  contains  : contains
 };
