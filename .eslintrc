@@ -2,5 +2,9 @@
   "extends":"arenanet",
   "rules":{
     "no-redeclare": 0
-  }
+  },
+  "globals":{
+    "it":true,
+    "describe":true
+  },
 }
