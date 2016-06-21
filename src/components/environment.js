@@ -1,11 +1,9 @@
-var util = require('./utilities.js'),
-    _window = require('./object.js')._window,
-    not = util.not;
+var util = require("./utilities.js"),
+    _window = require("./object.js")._window;
 
 var w =   _window(window) && window,
-    n =   w && w.navigator;
+    n =   w && w.navigator,
     p =   n.platform;
-
 
   // Online/Offline Status
   function online() {
@@ -27,23 +25,23 @@ var w =   _window(window) && window,
 
   // Major Operating Systems
   function windows() {
-    return p.indexOf('Win');
+    return p.indexOf("Win");
   }
 
   function linux() {
-    return p.indexOf('Linux');
+    return p.indexOf("Linux");
   }
 
   function mac() {
-    return p.indexOf('Mac')
+    return p.indexOf("Mac");
   }
 
   module.exports = {
-    online: online,
-    offline: offline,
-    browser: browser,
-    node: node,
-    windows: windows,
-    linux: linux,
-    mac: mac
-  }
+    online  : online,
+    offline : offline,
+    browser : browser,
+    node    : node,
+    windows : windows,
+    linux   : linux,
+    mac     : mac
+  };

@@ -1,19 +1,19 @@
-var util = require('./utilities.js'),
+var util = require("./utilities.js"),
     forge = util.forge;
 
 var types = {
-  'object':     '[object Object]',
-  'array':      '[object Array]',
-  'string':     '[object String]',
-  'boolean':    '[object Boolean]',
-  'number':     '[object Number]',
-  'regex':      '[object RegExp]',
-  'date':       '[object Date]',
-  'error':      '[object Error]',
-  '_undefined': '[object Undefined]',
-  '_null':      '[object Null]',
-  '_function':  '[object Function]',
-  '_arguments': '[object Arguments]'
+  "object"     : "[object Object]",
+  "array"      : "[object Array]",
+  "string"     : "[object String]",
+  "boolean"    : "[object Boolean]",
+  "number"     : "[object Number]",
+  "regex"      : "[object RegExp]",
+  "date"       : "[object Date]",
+  "error"      : "[object Error]",
+  "_undefined" : "[object Undefined]",
+  "_null"      : "[object Null]",
+  "_function"  : "[object Function]",
+  "_arguments" : "[object Arguments]"
 };
 
 
@@ -21,7 +21,7 @@ function type(expected, actual) {
   var formed = {}.toString.call(actual);
   return expected ? formed === expected : formed;
 
-  // if Actual is an array... Do check on all? 
+  // if Actual is an array... Do check on all?
 }
 
 var object      = forge(type, types.object),
@@ -42,7 +42,7 @@ function char(value) {
 }
 
 function nan(value) {
-  return number(value) && value.toString() === 'NaN';
+  return number(value) && value.toString() === "NaN";
 }
 
 function json(value) {
@@ -56,22 +56,22 @@ function promise(value) {
 }
 
 module.exports = {
-  types: types,
-  type: type,
-  object: object,
-  array: array,
-  string: string,
-  char: char,
-  _function: _function,
-  boolean: boolean,
-  number: number,
-  regexp: regexp,
-  date: date,
-  error: error,
-  arguments: arguments,
-  nan: nan,
-  _null: _null,
-  _undefined: _undefined,
-  json: json,
-  promise: promise
+  types      : types,
+  type       : type,
+  object     : object,
+  array      : array,
+  string     : string,
+  char       : char,
+  _function  : _function,
+  boolean    : boolean,
+  number     : number,
+  regexp     : regexp,
+  date       : date,
+  error      : error,
+  arguments  : arguments,
+  nan        : nan,
+  _null      : _null,
+  _undefined : _undefined,
+  json       : json,
+  promise    : promise
 };

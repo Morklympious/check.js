@@ -18,6 +18,8 @@
   "homepage": "",
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^2.13.1",
+    "eslint-config-arenanet": "^2.0.5",
     "mocha": "^2.4.5",
     "webpack": "^1.12.11"
   }

@@ -1,39 +1,38 @@
-var type = require('./type.js'),
+var type = require("./type.js"),
     test = type.date,
     number = type.number,
-    util = require('./utilities.js'),
-    not = util.not,
-    all = util.all;
+    util = require("./utilities.js"),
+    not = util.not;
 
 
 var days = [
-  'sunday',
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-  'saturday'
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday"
   ];
 
 var months = [
-  'january',
-  'february',
-  'march',
-  'april',
-  'may',
-  'june',
-  'july',
-  'august',
-  'september',
-  'october',
-  'november',
-  'december'
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december"
 ];
 
 
-function day(date, day) {
-  return test(date) && day.toLowerCase() === days[date.getDay()];
+function day(date, name) {
+  return test(date) && name.toLowerCase() === days[date.getDay()];
 }
 
 function today(date) {
@@ -64,27 +63,26 @@ function year(date, target) {
   return test(date) && number(target) && target === date.getFullYear();
 }
 
-// TODO: Add delta? e.g. "Within past three hours"
-// delta in milliseconds
 function past(date, delta) {
   var now = new Date(),
       delta = delta || 0,
       current = now.getTime(),
       dTime = date.getTime();
-// now - delta < date passed in < now
+
   return test(date) && (((current - delta) < dTime) && (dTime < current));
 }
 
 function future(date, delta) {
-  var now = new Date(),
-      delta = delta || 0,
+  var now     = new Date(),
+      delta   = delta || 0,
       current = now.getTime(),
-      dTime = date.getTime();
+      dTime   = date.getTime();
+
   return test(date) && (current < dTime && dTime < (current + delta)) || current < dTime;
 }
 
 function weekend(date) {
-  return test(date) && [0, 6].indexOf(date.getDay()) > -1;
+  return test(date) && [ 0, 6 ].indexOf(date.getDay()) > -1;
 }
 
 function weekday(date) {
@@ -93,7 +91,6 @@ function weekday(date) {
 
 // date is within date range
 function within(date, start, end) {
-  debugger;
   var starting = start.getTime(),
       chosen   = date.getTime(),
       ending   = end.getTime();
@@ -102,15 +99,15 @@ function within(date, start, end) {
 }
 
 module.exports = {
-  day: day,
-  today: today,
-  yesterday: yesterday,
-  tomorrow: tomorrow,
-  month: month,
-  year: year,
-  past: past,
-  future: future,
-  weekend: weekend,
-  weekday: weekday,
-  within: within
-}
+  day       : day,
+  today     : today,
+  yesterday : yesterday,
+  tomorrow  : tomorrow,
+  month     : month,
+  year      : year,
+  past      : past,
+  future    : future,
+  weekend   : weekend,
+  weekday   : weekday,
+  within    : within
+};

@@ -1,5 +1,5 @@
-var util = require('./utilities.js'),
-    type = require('./type.js'),
+var util = require("./utilities.js"),
+    type = require("./type.js"),
     test = type.number,
     nan = type.nan,
     not = util.not;
@@ -15,7 +15,7 @@ function even(number) {
 }
 
 function odd(number) {
-  return not(even(number)) && finite(number) ;
+  return not(even(number)) && finite(number);
 }
 
 function positive(number) {
@@ -55,16 +55,16 @@ function infinite(number) {
 }
 
 module.exports = {
-  equal: equal,
-  even: even,
-  odd: odd,
-  positive: positive,
-  negative: negative,
-  higher: higher,
-  lower:lower,
-  within: within,
-  decimal: decimal,
-  integer: integer,
-  finite: finite,
-  infinite: infinite
-}
+  equal    : equal,
+  even     : even,
+  odd      : odd,
+  positive : positive,
+  negative : negative,
+  higher   : higher,
+  lower    : lower,
+  within   : within,
+  decimal  : decimal,
+  integer  : integer,
+  finite   : finite,
+  infinite : infinite
+};

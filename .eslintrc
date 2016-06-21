@@ -1,0 +1,6 @@
+{
+  "extends":"arenanet",
+  "rules":{
+    "no-redeclare": 0
+  }
+}

@@ -1,4 +1,4 @@
-var test = require('./type.js').object;
+var test = require("./type.js").object;
 
 var keys = Object.keys;
 
@@ -19,8 +19,8 @@ function _window(obj) {
 }
 
 module.exports = {
-  length: length,
-  empty: empty,
-  contains: contains,
-  _window: _window
-}
+  length   : length,
+  empty    : empty,
+  contains : contains,
+  _window  : _window
+};

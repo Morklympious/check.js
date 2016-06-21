@@ -1,8 +1,8 @@
-var test = require('./type.js').string
+var test = require("./type.js").string;
 
 function includes(str, sub) {
     return test(str) && str.indexOf(sub) > -1;
-};
+}
 
 function caps(str) {
    return test(str) && str === str.toUpperCase();
@@ -25,10 +25,10 @@ function empty(str) {
 }
 
 module.exports = {
-  includes: includes,
-  caps: caps,
-  lowercase: lowercase,
-  begins: begins,
-  ends: ends,
-  empty: empty
-}
+  includes  : includes,
+  caps      : caps,
+  lowercase : lowercase,
+  begins    : begins,
+  ends      : ends,
+  empty     : empty
+};
