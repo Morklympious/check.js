@@ -6,17 +6,6 @@ var w =   _window(window) && window,
     n =   w && w.navigator;
     p =   n.platform;
 
-  function touch() {
-    return n.MaxTouchPoints > 0;
-  }
-
-  function multitouch() {
-    return n.MaxTouchPoints > 1;
-  }
-
-  function geolocation() {
-    return n.geolocation;
-  }
 
   // Online/Offline Status
   function online() {
@@ -50,9 +39,6 @@ var w =   _window(window) && window,
   }
 
   module.exports = {
-    touch: touch,
-    multitouch: multitouch,
-    geolocation: geolocation,
     online: online,
     offline: offline,
     browser: browser,
