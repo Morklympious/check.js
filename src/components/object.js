@@ -2,7 +2,7 @@ var test = require("./type.js").object;
 
 var keys = Object.keys;
 
-function length(obj, count) {
+function size(obj, count) {
   return test(obj) && keys(obj).length === count;
 }
 
@@ -11,16 +11,11 @@ function empty(obj) {
 }
 
 function contains(obj, prop) {
-  return test(obj) && obj[prop];
-}
-
-function _window(obj) {
-  return test(obj) && obj === obj.window;
+  return test(obj) && Boolean(obj[prop]);
 }
 
 module.exports = {
-  length   : length,
+  size     : size,
   empty    : empty,
-  contains : contains,
-  _window  : _window
+  contains : contains
 };

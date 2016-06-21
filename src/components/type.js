@@ -46,13 +46,13 @@ function nan(value) {
 }
 
 function json(value) {
-  return !!JSON.parse(value);
+  return Boolean(JSON.parse(value));
 }
 // Special use case for Promises,
 // The A+ spec says anything with a .then()
 // is acceptable as a promise.
 function promise(value) {
-  return !!value.then && _function(value.then);
+  return Boolean(value.then) && _function(value.then);
 }
 
 module.exports = {
