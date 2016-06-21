@@ -1,55 +1,57 @@
 var util = require('./utilities.js'),
-    test = require('./type.js').number
-    not = util.not,
-    nan = util.nan;
+    type = require('./type.js'),
+    test = type.number,
+    nan = type.nan,
+    not = util.not;
+
 
 function equal(one, two) {
   return test(one) && test(two) && one === two;
 }
 
-function even(num) {
+function even(number) {
   // If modulo is 0, not will make it true.
-  return test(num) && not(num % 2);
+  return test(number) && finite(number) && not(number % 2);
 }
 
-function odd(num) {
-  return not(even(num));
+function odd(number) {
+  return not(even(number)) && finite(number) ;
 }
 
-function positive(num) {
-  return test(num) && num > 0;
+function positive(number) {
+  return test(number) && number > 0;
 }
 
-function negative(num) {
-  return test(num) && num < 0;
+function negative(number) {
+  return test(number) && number < 0;
 }
 
-function higher(num, threshold) {
-  return test(num) && test(threshold) && num > threshold;
+function higher(number, threshold) {
+  return test(number) && test(threshold) && within(number, threshold, number + 1);
 }
 
-function lower(num, threshold) {
-  return test(num) && test(threshold) && num < threshold;
+function lower(number, threshold) {
+  return test(number) && test(threshold) && within(number, number - 1, threshold);
 }
 
-function within(num, min, max) {
-  return (test(num) && test(min) && test(max)) && (min < num < max);
+function within(number, min, max) {
+  return (test(number) && test(min) && test(max)) && (min < number && number < max);
 }
 
-function decimal(num) {
-  return test(num) && lower((num % 1), 1);
+function decimal(number) {
+  return test(number) && within(number % 1, 0, 1);
 }
 
-function integer(num) {
-  return test(num) && not(decimal(num));
+function integer(number) {
+  return test(number) && not(decimal(number));
 }
 
-function finite(num) {
-  return test(num) && not(num === Infinity);
+function finite(number) {
+  return test(number) && not(nan(number)) && not(number === Infinity);
 }
 
-function infinite(num) {
-  return not(finite);
+function infinite(number) {
+  return test(number) && not(finite(number));
 }
 
 module.exports = {
