@@ -24,6 +24,10 @@ function empty(str) {
   return test(str) && str.length === 0;
 }
 
+function contains(str, sub) {
+  return test(str) && test(sub) && ~str.indexOf(sub);
+}
+
 module.exports = {
   includes  : includes,
   caps      : caps,

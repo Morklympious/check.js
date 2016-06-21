@@ -65,7 +65,7 @@ describe("Type Checking", function() {
       expect(char).to.be.a("function");
     });
 
-    it('true for char("a") / char(new String("a"))', function() {
+    it("true for char('a') / char(new String('a'))", function() {
       expect(char("a")).to.be.true;
       expect(char(new String("a"))).to.be.true;
     });
