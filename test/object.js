@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    object  = require("../src/components/object.js");
+    object = require("../src/components/object.js");
 
 describe("Object Checking", function() {
   describe("size(obj, count)", function() {
@@ -11,17 +11,15 @@ describe("Object Checking", function() {
       expect(size({ one : 1 }, 1)).to.be.true;
       expect(size({}, 2)).to.be.false;
     });
-
   });
 
   describe("empty(obj)", function() {
     var empty = object.empty;
-  
+
     it("should be true if object has no user-defined keys", function() {
       expect(empty({ one : 1 })).to.be.false;
       expect(empty({})).to.be.true;
     });
-
   });
 
   describe("contains(obj, prop)", function() {
@@ -32,5 +30,4 @@ describe("Object Checking", function() {
       expect(contains(object, "contains")).to.be.true;
     });
   });
-  
 });

@@ -6,8 +6,8 @@ var types = require("./type.js"),
 // Ripped from
 // code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149
 var patterns = {
-  username : /^[a-z0-9_-]{3,16}$/,
-  password : /^[a-z0-9_-]{6,18}$/,
+  username : /^[a-zA-Z0-9_-]{3,16}$/,
+  password : /^[a-zA-Z0-9_-]{6,18}$/,
   hex      : /^#?([a-f0-9]{6}|[a-f0-9]{3})$/,
   slug     : /^[a-z0-9-]+$/,
   email    : /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
