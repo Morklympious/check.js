@@ -2,17 +2,15 @@
 // Author: Bradley Stafford
 
 var library = {
-  utilities   : require("./components/utilities.js"),
-  object      : require("./components/object.js"),
-  existence   : require("./components/existence.js"),
-  string      : require("./components/string.js"),
-  type        : require("./components/type.js"),
-  date        : require("./components/date.js"),
-  environment : require("./components/environment.js"),
-  array       : require("./components/array.js"),
-  number      : require("./components/number.js"),
-  regex       : require("./components/regex.js")
+  array     : require("./components/array.js"),
+  date      : require("./components/date.js"),
+  existence : require("./components/existence.js"),
+  number    : require("./components/number.js"),
+  object    : require("./components/object.js"),
+  regex     : require("./components/regex.js"),
+  string    : require("./components/string.js"),
+  type      : require("./components/type.js"),
+  utilities : require("./components/utilities.js")
 };
 
-global.check = library;
-module.exports = global.check;
+module.exports = library;

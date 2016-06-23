@@ -16,7 +16,8 @@ var types = {
   "_arguments" : "[object Arguments]"
 };
 
-
+// type(types.object, {}) //=> true
+// type(null, {}) //=> [object Object];
 function type(expected, actual) {
   var formed = {}.toString.call(actual);
   return expected ? formed === expected : formed;
@@ -48,6 +49,7 @@ function nan(value) {
 function json(value) {
   return Boolean(JSON.parse(value));
 }
+
 // Special use case for Promises,
 // The A+ spec says anything with a .then()
 // is acceptable as a promise.
