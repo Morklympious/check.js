@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions, no-new-wrappers, no-array-constructor, no-new-object */
 
 var expect = require("chai").expect;
-var types = require("../src/components/type.js");
+var types = require("../src/cmp/type.js");
 
 describe("Type Checking", function() {
   describe("type(expected, actual)", function() {

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    existence  = require("../src/components/existence.js"),
+    existence  = require("../src/cmp/existence.js"),
     undef;
 
 describe("Existence Checking", function() {

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    string  = require("../src/components/string.js");
+    string  = require("../src/cmp/string.js");
 
 describe("String Checking", function() {
   describe("caps(str)", function() {

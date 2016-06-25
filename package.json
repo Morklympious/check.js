@@ -1,11 +1,11 @@
 {
   "name": "check.js",
   "version": "0.1.0",
-  "main": "checkered.js",
+  "main": "./src/check.js",
   "license": "MIT",
   "description": "Micro-sized check library",
   "scripts": {
-    "build": "browserify src/check.js -o dist/bundle.js",
+    "build": "browserify -g [ uglifyify --compress [ --drop_console --unused ] --mangle --screw-ie8 ] src/check.js -o dist/bundle.js",
     "watch": "watchify src/check.js -o dist/bundle.js --verbose",
     "test": "mocha"
   },
@@ -21,7 +21,6 @@
     "eslint": "^2.13.1",
     "eslint-config-arenanet": "^2.0.5",
     "mocha": "^2.4.5",
-    "rollupify": "^0.3.1",
-    "webpack": "^1.12.11"
+    "uglifyify": "^3.0.2"
   }
 }

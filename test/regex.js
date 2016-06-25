@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    regex  = require("../src/components/regex.js");
+    regex  = require("../src/cmp/regex.js");
 
 describe("Regular Expression Checks", function() {
   describe("pattern(expected, actual)", function() {

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    util   = require("../src/components/utilities.js");
+    util   = require("../src/cmp/utilities.js");
 
 
 describe("Utility Checks", function() {

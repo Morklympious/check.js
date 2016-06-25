@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    number = require("../src/components/number.js");
+    number = require("../src/cmp/number.js");
 
 describe("Number Checking", function() {
   describe("equal(number)", function() {

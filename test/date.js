@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    date  = require("../src/components/date.js");
+    date  = require("../src/cmp/date.js");
 
 describe("Date Checking", function() {
   var birthday  = new Date("1/16/1991");

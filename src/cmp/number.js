@@ -4,6 +4,13 @@ var util = require("./utilities.js"),
     nan = type.nan,
     not = util.not;
 
+function finite(number) {
+  return test(number) && not(nan(number)) && not(number === Infinity);
+}
+
+function infinite(number) {
+  return test(number) && not(finite(number));
+}
 
 function equal(one, two) {
   return test(one) && test(two) && one === two;
@@ -46,13 +53,6 @@ function integer(number) {
   return test(number) && not(decimal(number));
 }
 
-function finite(number) {
-  return test(number) && not(nan(number)) && not(number === Infinity);
-}
-
-function infinite(number) {
-  return test(number) && not(finite(number));
-}
 
 module.exports = {
   equal    : equal,

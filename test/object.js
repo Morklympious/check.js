@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    object = require("../src/components/object.js");
+    object = require("../src/cmp/object.js");
 
 describe("Object Checking", function() {
   describe("size(obj, count)", function() {

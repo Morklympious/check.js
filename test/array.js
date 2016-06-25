@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    array  = require("../src/components/array.js");
+    array  = require("../src/cmp/array.js");
 
 describe("Array Checking", function() {
   describe("contains(collection, value)", function() {
