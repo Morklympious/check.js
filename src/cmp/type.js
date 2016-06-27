@@ -1,30 +1,26 @@
-var util = require("./utilities.js"),
-    forge = util.forge;
+import util from "./utilities.js";
 
+var forge = util.forge;
+
+//OPTIMIZATION: Shorten the values here to remove [object ],
+// and make the logic slice the toString 
 var types = {
-  "object"     : "[object Object]",
-  "array"      : "[object Array]",
-  "string"     : "[object String]",
-  "boolean"    : "[object Boolean]",
-  "number"     : "[object Number]",
-  "regex"      : "[object RegExp]",
-  "date"       : "[object Date]",
-  "error"      : "[object Error]",
-  "_undefined" : "[object Undefined]",
-  "_null"      : "[object Null]",
-  "_function"  : "[object Function]",
-  "_arguments" : "[object Arguments]"
+  "object"     : "Object",
+  "array"      : "Array",
+  "string"     : "String",
+  "boolean"    : "Boolean",
+  "number"     : "Number",
+  "regex"      : "RegExp",
+  "date"       : "Date",
+  "error"      : "Error",
+  "_undefined" : "Undefined",
+  "_null"      : "Null",
+  "_function"  : "Function",
+  "_arguments" : "Arguments"
 };
 
-// type(types.object, {}) //=> true
-// type(null, {}) //=> [object Object];
-function type(expected, actual) {
-  var formed = {}.toString.call(actual);
-  return expected ? formed === expected : formed;
 
-  // if Actual is an array... Do check on all?
-}
-
+/* eslint-disable no-use-before-define */
 var object      = forge(type, types.object),
     array       = Array.isArray || forge(type, types.array),
     string      = forge(type, types.string),
@@ -34,9 +30,18 @@ var object      = forge(type, types.object),
     regexp      = forge(type, types.regexp),
     date        = forge(type, types.date),
     error       = forge(type, types.error),
-    arguments   = forge(type, types._arguments),
+    _arguments  = forge(type, types._arguments),
     _null       = forge(type, types._null),
     _undefined  = forge(type, types._undefined);
+
+// type(types.object, {}) //=> true
+// type(null, {}) //=> [object Object];
+function type(expected, actual) {
+  var formed = {}.toString.call(actual),
+      short  = formed.substring(8, formed.length - 1);
+  
+  return expected ? short === expected : short;
+}
 
 function char(value) {
   return string(value) && value.length === 1;
@@ -57,23 +62,23 @@ function promise(value) {
   return Boolean(value.then) && _function(value.then);
 }
 
-module.exports = {
-  types      : types,
-  type       : type,
-  object     : object,
-  array      : array,
-  string     : string,
-  char       : char,
-  _function  : _function,
-  boolean    : boolean,
-  number     : number,
-  regexp     : regexp,
-  date       : date,
-  error      : error,
-  arguments  : arguments,
-  nan        : nan,
-  _null      : _null,
-  _undefined : _undefined,
-  json       : json,
-  promise    : promise
+export default {
+  types,
+  type,
+  object,
+  array,
+  string,
+  char,
+  boolean,
+  number,
+  regexp,
+  date,
+  error,
+  _function,
+  _arguments,
+  _null,
+  _undefined,
+  nan,
+  json,
+  promise
 };

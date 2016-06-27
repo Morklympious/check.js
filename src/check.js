@@ -1,14 +1,22 @@
-// check.js (fork of 'is.js' by Aras)
-// Author: Bradley Stafford
+import array from "./cmp/array.js";
+import date from "./cmp/date.js";
+import existence from "./cmp/existence.js";
+import number from "./cmp/number.js";
+import object from "./cmp/object.js";
+import regex from "./cmp/regex.js";
+import string from "./cmp/string.js";
+import type from "./cmp/type.js";
+import utilities from "./cmp/utilities.js";
 
-module.exports = {
-  array     : require("./cmp/array.js"),
-  date      : require("./cmp/date.js"),
-  existence : require("./cmp/existence.js"),
-  number    : require("./cmp/number.js"),
-  object    : require("./cmp/object.js"),
-  regex     : require("./cmp/regex.js"),
-  string    : require("./cmp/string.js"),
-  type      : require("./cmp/type.js"),
-  utilities : require("./cmp/utilities.js")
+export default {
+  array,
+  date,
+  existence,
+  number,
+  object,
+  regex,
+  string,
+  type,
+  utilities,
+  not : utilities.not
 };

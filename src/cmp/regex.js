@@ -1,6 +1,7 @@
-var types = require("./type.js"),
-    test = types.regexp,
-    util = require("./utilities"),
+import type from "./type.js";
+import util from "./utilities.js";
+
+var test  = type.regexp,
     forge = util.forge;
 
 // Ripped from
@@ -18,13 +19,12 @@ function pattern(expected, actual) {
   return test(actual) && expected.test(actual);
 }
 
-module.exports = {
-  pattern  : pattern,
+export default {
+  pattern,
   username : forge(pattern, patterns.username),
   password : forge(pattern, patterns.password),
   hex      : forge(pattern, patterns.hex),
   slug     : forge(pattern, patterns.slug),
   email    : forge(pattern, patterns.email),
-  url      : forge(pattern, patterns.url),
-  ip       : forge(pattern, patterns.ip)
+  url      : forge(pattern, patterns.url)
 };

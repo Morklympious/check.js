@@ -1,4 +1,9 @@
-var test = require("./type.js").string;
+import type from "./type.js";
+const test = type.string;
+
+function contains(str, sub) {
+  return test(str) && test(sub) && str.indexOf(sub) > -1;
+}
 
 function caps(str) {
    return test(str) && str === str.toUpperCase();
@@ -9,7 +14,8 @@ function lowercase(str) {
 }
 
 function begins(str, sub) {
-  return contains(str, sub) && str.indexOf(sub) === 0;
+  // If str.indexOf(sub) is 0, bang will give true.
+  return contains(str, sub) && !str.indexOf(sub);
 }
 
 function ends(str, sub) {
@@ -17,18 +23,15 @@ function ends(str, sub) {
 }
 
 function empty(str) {
-  return test(str) && str.length === 0;
+  // If str.length is 0, bang will give true.
+  return test(str) && !str.length;
 }
 
-function contains(str, sub) {
-  return test(str) && test(sub) && str.indexOf(sub) > -1;
-}
-
-module.exports = {
-  caps      : caps,
-  lowercase : lowercase,
-  begins    : begins,
-  ends      : ends,
-  empty     : empty,
-  contains  : contains
+export default {
+  contains,
+  caps,
+  lowercase,
+  begins,
+  ends,
+  empty
 };

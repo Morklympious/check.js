@@ -1,26 +1,40 @@
 /* eslint-disable no-unused-expressions, no-new-wrappers, no-array-constructor, no-new-object */
 
-var expect = require("chai").expect;
-var types = require("../src/cmp/type.js");
+var expect = require("chai").expect,
+    Promise = require("bluebird"),
+    types = {};
 
 describe("Type Checking", function() {
+  
+  before(() => {
+    require("./lib/compile")("./src/cmp/type.js", types);
+  });
+
   describe("type(expected, actual)", function() {
-    var type = types.type;
+    var type;
+
+    before(() => {
+      type = types.exports.type;
+    });
 
     it("should be a function", function() {
       expect(type).to.be.a("function");
     });
 
     it("should return a proper type based on an internal map", function() {
-      expect(type("[object Object]", {})).to.be.true;
-      expect(type("[object Array]", [])).to.be.true;
-      expect(type("[object Number]", 1)).to.be.true;
-      expect(type("[object Error]", new Error())).to.be.true;
+      expect(type("Object", {})).to.be.true;
+      expect(type("Array", [])).to.be.true;
+      expect(type("Number", 1)).to.be.true;
+      expect(type("Error", new Error())).to.be.true;
     });
   });
 
   describe("object (value)", function() {
-    var object = types.object;
+    var object;
+
+    before(() => {
+      object = types.exports.object;
+    });    
 
     it("should be a function", function() {
       expect(object).to.be.a("function");
@@ -33,7 +47,11 @@ describe("Type Checking", function() {
   });
 
   describe("array (value)", function() {
-    var array = types.array;
+    var array;
+
+    before(() => {
+      array = types.exports.array;
+    });
 
     it("should be a function", function() {
       expect(array).to.be.a("function");
@@ -46,7 +64,11 @@ describe("Type Checking", function() {
   });
 
   describe("string (value)", function() {
-    var string = types.string;
+    var string;
+
+    before(() => {
+      string = types.exports.string;
+    });
 
     it("should be a function", function() {
       expect(string).to.be.a("function");
@@ -59,7 +81,11 @@ describe("Type Checking", function() {
   });
 
   describe("char (value)", function() {
-    var char = types.char;
+    var char;
+
+    before(() => {
+      char = types.exports.char;
+    });
 
     it("should be a function", function() {
       expect(char).to.be.a("function");
@@ -76,7 +102,11 @@ describe("Type Checking", function() {
   });
 
   describe("_function (value)", function() {
-    var _function = types._function;
+    var _function;
+
+    before(() => {
+      _function = types.exports._function;
+    });
 
     it("should be a function", function() {
       expect(_function).to.be.a("function");
@@ -95,7 +125,11 @@ describe("Type Checking", function() {
   });
 
   describe("boolean (value)", function() {
-    var boolean = types.boolean;
+    var boolean;
+
+    before(() => {
+      boolean = types.exports.boolean;
+    });
 
     it("should be a function", function() {
       expect(boolean).to.be.a("function");
@@ -112,7 +146,11 @@ describe("Type Checking", function() {
   });
 
   describe("number (value)", function() {
-    var number = types.number;
+    var number;
+
+    before(() => {
+      number = types.exports.number;
+    });
 
     it("should be a function", function() {
       expect(number).to.be.a("function");
@@ -126,162 +164,180 @@ describe("Type Checking", function() {
 
 
   describe("regexp (value)", function() {
-      var regexp = types.regexp;
+    var regexp;
 
-      it("should be a function", function() {
-        expect(regexp).to.be.a("function");
-      });
+    before(() => {
+      regexp = types.exports.regexp;
+    });
 
-      it("true for regexp(/s/) / regexp(new RegExp())", function() {
-         expect(regexp(/s/g)).to.be.ok;
-         expect(regexp(new RegExp("/s/"))).to.be.ok;
-      });
+    it("should be a function", function() {
+      expect(regexp).to.be.a("function");
+    });
+
+    it("true for regexp(/s/) / regexp(new RegExp())", function() {
+        expect(regexp(/s/g)).to.be.ok;
+        expect(regexp(new RegExp("/s/"))).to.be.ok;
+    });
   });
 
   describe("date (value)", function() {
-      var date = types.date;
+    var date;
 
-      it("should be a function", function() {
-        expect(date).to.be.a("function");
-      });
+    before(() => {
+      date = types.exports.date;
+    });
 
-      it("true for date(new Date())", function() {
-        expect(date(new Date())).to.be.true;
-      });
+    it("should be a function", function() {
+      expect(date).to.be.a("function");
+    });
+
+    it("true for date(new Date())", function() {
+      expect(date(new Date())).to.be.true;
+    });
   });
 
   describe("error (value)", function() {
-      var error = types.error;
+    var error;
 
-      it("should be a function", function() {
-        expect(error).to.be.a("function");
-      });
+    before(() => {
+      error = types.exports.error;
+    });
 
-      it("true for error(new Error())", function() {
-        expect(error(new Error())).to.be.true;
-      });
+    it("should be a function", function() {
+      expect(error).to.be.a("function");
+    });
+
+    it("true for error(new Error())", function() {
+      expect(error(new Error())).to.be.true;
+    });
   });
 
   describe("arguments (value)", function() {
-      var _arguments = types.arguments;
+    var _arguments;
 
-      it("should be a function", function() {
-        expect(_arguments).to.be.a("function");
-      });
+    before(() => {
+      _arguments = types.exports._arguments;
+    });
 
-      it("true for function arguments object", function() {
-        expect(_arguments(arguments)).to.be.true;
-      });
+    it("should be a function", function() {
+      expect(_arguments).to.be.a("function");
+    });
+
+    it("true for function arguments object", function() {
+      expect(_arguments(arguments)).to.be.true;
+    });
   });
 
   describe("nan (value)", function() {
-      var nan = types.nan;
+    var nan;
 
-      it("should be a function", function() {
-        expect(nan).to.be.a("function");
-      });
+    before(() => {
+      nan = types.exports.nan;
+    });
 
-      it("true for nan(NaN)", function() {
-        expect(nan(NaN)).to.be.true;
-      });
+    it("should be a function", function() {
+      expect(nan).to.be.a("function");
+    });
 
-      it("false for valid numbers", function() {
-        expect(nan(1)).to.be.false;
-      });
+    it("true for nan(NaN)", function() {
+      expect(nan(NaN)).to.be.true;
+    });
 
-      it("false for +Infinity/-Infinity", function() {
-        expect(nan(Number(Infinity))).to.be.false;
-        expect(nan(Number(-Infinity))).to.be.false;
-      });
+    it("false for valid numbers", function() {
+      expect(nan(1)).to.be.false;
+    });
+
+    it("false for +Infinity/-Infinity", function() {
+      expect(nan(Number(Infinity))).to.be.false;
+      expect(nan(Number(-Infinity))).to.be.false;
+    });
   });
 
 
     describe("_null (value)", function() {
-        var _null = types._null;
+      var _null;
 
-        it("should be a function", function() {
-          expect(_null).to.be.a("function");
-        });
+      before(() => {
+        _null = types.exports._null;
+      });
 
-        it("true for _null(null)", function() {
-          expect(_null(null)).to.be.true;
-        });
+      it("should be a function", function() {
+        expect(_null).to.be.a("function");
+      });
 
-        it("false for _null(NaN)", function() {
-          expect(_null(NaN)).to.be.false;
-        });
+      it("true for _null(null)", function() {
+        expect(_null(null)).to.be.true;
+      });
 
-        it("false for truthy values", function() {
-          expect(_null(1)).to.be.false;
-          expect(_null("null")).to.be.false;
-          expect(_null(true)).to.be.false;
-        });
+      it("false for _null(NaN)", function() {
+        expect(_null(NaN)).to.be.false;
+      });
+
+      it("false for truthy values", function() {
+        expect(_null(1)).to.be.false;
+        expect(_null("null")).to.be.false;
+        expect(_null(true)).to.be.false;
+      });
     });
 
     describe("_undefined (value)", function() {
-        var _undefined = types._undefined;
+      var _undefined;
 
-        it("should be a function", function() {
-          expect(_undefined).to.be.a("function");
-        });
+      before(() => {
+        _undefined = types.exports._undefined;
+      });
 
-        it("false for _undefined(null)", function() {
-          expect(_undefined(null)).to.be.false;
-        });
+      it("should be a function", function() {
+        expect(_undefined).to.be.a("function");
+      });
 
-        it("true for _undefined(undefined)", function() {
-          expect(_undefined(undefined)).to.be.true;
-        });
+      it("false for _undefined(null)", function() {
+        expect(_undefined(null)).to.be.false;
+      });
 
-        it("false for truthy values", function() {
-          expect(_undefined(1)).to.be.false;
-          expect(_undefined("null")).to.be.false;
-          expect(_undefined(true)).to.be.false;
-        });
+      it("true for _undefined(undefined)", function() {
+        expect(_undefined(undefined)).to.be.true;
+      });
+
+      it("false for truthy values", function() {
+        expect(_undefined(1)).to.be.false;
+        expect(_undefined("null")).to.be.false;
+        expect(_undefined(true)).to.be.false;
+      });
     });
 
     describe("json (value)", function() {
-        var json = types.json;
+      var json;
 
-        it("should be a function", function() {
-          expect(json).to.be.a("function");
-        });
+      before(() => {
+        json = types.exports.json;
+      });
 
-        it("true for valid JSON", function() {
-          var js = '{"one": "two", "three": ["four", "five"]}';
+      it("should be a function", function() {
+        expect(json).to.be.a("function");
+      });
 
-          expect(json(js)).to.be.true;
-        });
+      it("true for valid JSON", function() {
+        var js = '{"one": "two", "three": ["four", "five"]}';
+
+        expect(json(js)).to.be.true;
+      });
     });
-
-    describe("json (value)", function() {
-        var json = types.json;
-
-        it("should be a function", function() {
-          expect(json).to.be.a("function");
-        });
-
-        it("true for valid JSON", function() {
-          var js = '{"one": "two", "three": ["four", "five"]}';
-
-          expect(json(js)).to.be.true;
-        });
-    });
-
 
     describe("promise (value)", function() {
-        var promise = types.promise;
+        var promise,
+            p = new Promise(function(){}, function(){});
+
+        before(() => {
+          promise = types.exports.promise;
+        });
 
         it("should be a function", function() {
           expect(promise).to.be.a("function");
         });
 
-        it("should have a .then() property", function() {
-          // expect(p.then).to.be.ok;
-        });
-
         it("true for promise(Promise)", function() {
-          // expect(promise(p)).to.be.true;
+          expect(promise(p)).to.be.true;
         });
     });
 });

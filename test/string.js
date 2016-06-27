@@ -1,11 +1,21 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    string  = require("../src/cmp/string.js");
+    string  = {};
 
 describe("String Checking", function() {
+  
+  before(() => {
+    require("./lib/compile")("./src/cmp/string.js", string);
+  });
+
+
   describe("caps(str)", function() {
-    var caps = string.caps;
+    var caps;
+
+    before(() => {
+      caps = string.exports.caps;
+    });
 
     it("should be true for all caps strings", function() {
       expect(caps("YOLO")).to.be.true;
@@ -19,7 +29,11 @@ describe("String Checking", function() {
   });
 
   describe("lowercase(str)", function() {
-    var lowercase = string.lowercase;
+    var lowercase;
+
+    before(() => {
+      lowercase = string.exports.lowercase;
+    });
 
     it("should be true for all lowercase strings", function() {
       expect(lowercase("yolo")).to.be.true;
@@ -34,7 +48,11 @@ describe("String Checking", function() {
   });
 
   describe("begins(str, sub)", function() {
-    var begins = string.begins;
+    var begins;
+
+    before(() => {
+      begins = string.exports.begins;
+    });
 
     it("should be true for sub starting str", function() {
       expect(begins("yolo", "yo")).to.be.true;
@@ -48,7 +66,11 @@ describe("String Checking", function() {
   });
 
   describe("ends(str, sub)", function() {
-    var ends = string.ends;
+    var ends;
+
+    before(() => {
+      ends = string.exports.ends;
+    });
 
     it("should be true for sub ending string", function() {
       expect(ends("yolo", "lo")).to.be.true;
@@ -62,7 +84,11 @@ describe("String Checking", function() {
   });
 
   describe("empty(str)", function() {
-    var empty = string.empty;
+    var empty;
+
+    before(() => {
+      empty = string.exports.empty;
+    });
 
     it("should be true for empty string", function() {
       expect(empty("")).to.be.true;
@@ -77,7 +103,11 @@ describe("String Checking", function() {
   });
 
   describe("contains(str, sub)", function() {
-    var contains = string.contains;
+    var contains;
+
+    before(() => {
+      contains = string.exports.contains;
+    });
 
     it("should be true for sub inside of str", function() {
       expect(contains("butterfly", "butter")).to.be.true;

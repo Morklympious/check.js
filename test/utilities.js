@@ -1,12 +1,20 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    util   = require("../src/cmp/utilities.js");
+    util = {};
+
 
 
 describe("Utility Checks", function() {
+
+  before(() => require("./lib/compile")("./src/cmp/utilities.js", util));
+
   describe("not(value)", function() {
-    var not = util.not;
+    var not;
+
+    before(() => {
+      not = util.exports.not;
+    });
 
     it("should be true for falsey values", function() {
       expect(not(false)).to.be.true;
@@ -15,26 +23,39 @@ describe("Utility Checks", function() {
   });
 
   describe("argen(args)", function() {
-    var argen = util.argen;
+    var argen;
 
-    function store() {
-      var args = argen(arguments);
+    before(() => {
+      argen = util.exports.argen;
+    });
 
-      expect(args).to.eql( [ 1, 2, 3, 4, 5 ] );
-    }
-    store(1, 2, 3, 4, 5);
+    it("should capture arguments", function() {
+
+      function store() {
+        var args = argen(arguments);
+
+        return args;
+      }
+
+      expect(store(1, 2, 3, 4, 5)).to.eql( [ 1, 2, 3, 4, 5 ] );
+    });
   });
 
   describe("forge(fn)", function() {
-    var forge = util.forge;
+    var forge;
 
-    var plusFive = forge(function(a, b) {
-      return a + b;
-    }, 5);
+    before(() => {
+      forge = util.exports.forge;
+    });
 
     it("should partially apply function arguments", function() {
+      var plusFive = forge(function(a, b) {
+        return a + b;
+      }, 5);
+
       expect(plusFive(6)).to.equal(11);
       expect(plusFive(0)).to.equal(5);
     });
   });
+
 });

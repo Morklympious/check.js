@@ -3,7 +3,7 @@ function not(value) {
 }
 
 function argen(args) {
-  return Array.prototype.slice.call(args);
+  return [].slice.call(args);
 }
 
 function forge(fn) {
@@ -14,8 +14,8 @@ function forge(fn) {
   };
 }
 
-module.exports = {
-  not   : not,
-  forge : forge,
-  argen : argen
+export default {
+  not,
+  forge,
+  argen
 };

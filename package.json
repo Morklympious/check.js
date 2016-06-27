@@ -5,7 +5,7 @@
   "license": "MIT",
   "description": "Micro-sized check library",
   "scripts": {
-    "build": "browserify -g [ uglifyify --compress [ --drop_console --unused ] --mangle --screw-ie8 ] src/check.js -o dist/bundle.js",
+    "build": "rollup --config",
     "watch": "watchify src/check.js -o dist/bundle.js --verbose",
     "test": "mocha"
   },
@@ -17,10 +17,15 @@
   },
   "homepage": "",
   "devDependencies": {
+    "bluebird": "^3.4.1",
+    "buble": "^0.12.3",
     "chai": "^3.5.0",
     "eslint": "^2.13.1",
     "eslint-config-arenanet": "^2.0.5",
     "mocha": "^2.4.5",
-    "uglifyify": "^3.0.2"
+    "rollup": "^0.33.0",
+    "rollup-plugin-buble": "^0.12.1",
+    "rollup-plugin-uglify": "^1.0.1",
+    "vm": "^0.1.0"
   }
 }

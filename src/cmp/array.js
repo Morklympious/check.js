@@ -1,14 +1,16 @@
-var test = require("./type.js").array;
+import type from "./type.js";
+
+var test = type.array;
 
 function contains(collection, value) {
   return test(collection) && collection.indexOf(value) > -1;
 }
 
 function empty(collection) {
-  return test(collection) && collection.length === 0;
+  return test(collection) && !collection.length;
 }
 
-module.exports = {
-  contains : contains,
-  empty    : empty
+export default {
+  contains,
+  empty
 };

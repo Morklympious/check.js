@@ -1,12 +1,21 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    existence  = require("../src/cmp/existence.js"),
+    existence  = {},
     undef;
 
 describe("Existence Checking", function() {
+  
+  before(() => {
+    require("./lib/compile")("./src/cmp/existence.js", existence);
+  });
+
   describe("exists(value)", function() {
-    var exists = existence.exists;
+    var exists;
+
+    before(() => {
+      exists = existence.exports.exists;
+    });
 
     it("should be false for undefined value", function() {
       expect(exists(undef)).to.be.false;
@@ -40,7 +49,11 @@ describe("Existence Checking", function() {
   });
 
   describe("truthy(value)", function() {
-    var truthy = existence.truthy;
+    var truthy;
+
+    before(() => {
+      truthy = existence.exports.truthy;
+    });
 
     it("should be false for undefined value", function() {
       expect(truthy(undef)).to.be.false;
@@ -64,7 +77,11 @@ describe("Existence Checking", function() {
   });
 
   describe("falsey(value)", function() {
-    var falsey = existence.falsey;
+    var falsey;
+
+    before(() => {
+      falsey = existence.exports.falsey;
+    });
 
     it("should be true for undefined value", function() {
       expect(falsey(undef)).to.be.true;

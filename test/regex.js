@@ -1,11 +1,20 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    regex  = require("../src/cmp/regex.js");
+    regex  = {}
 
 describe("Regular Expression Checks", function() {
+  
+  before(() => {
+    require("./lib/compile")("./src/cmp/regex.js", regex);
+  });
+
   describe("pattern(expected, actual)", function() {
-    var pattern = regex.pattern;
+    var pattern;
+
+    before(() => {
+      pattern = regex.exports.pattern;
+    });
 
     it("can perform custom regex checks", function() {
       expect(pattern(/[0-9]/, "1239876")).to.be.true;
@@ -14,7 +23,11 @@ describe("Regular Expression Checks", function() {
   });
 
   describe("username(str)", function() {
-    var username = regex.username;
+    var username;
+
+    before(() => {
+      username = regex.exports.username;
+    });
 
     it("is true for all text usernames", function() {
       expect(username("xEdgelordx")).to.be.true;
@@ -29,7 +42,11 @@ describe("Regular Expression Checks", function() {
   });
 
   describe("password(str)", function() {
-    var password = regex.password;
+    var password;
+
+    before(() => {
+      password = regex.exports.password;
+    });
 
     it("is true for all text passwords", function(){
       expect(password("secretPassword")).to.be.true;
@@ -49,7 +66,11 @@ describe("Regular Expression Checks", function() {
   });
 
   describe("hex(str)", function() {
-    var hex = regex.hex;
+    var hex;
+
+    before(() => {
+      hex = regex.exports.hex;
+    });
 
     it("is true for 6 digits a-f 0-9", function() {
       expect(hex("#abcdef")).to.be.true;
@@ -64,7 +85,11 @@ describe("Regular Expression Checks", function() {
   });
 
   describe("slug(str)", function() {
-    var slug = regex.slug;
+    var slug;
+
+    before(() => {
+      slug = regex.exports.slug;
+    });
 
     it("is true for strings connected with hyphen (and only hyphen)", function() {
       expect(slug("this-is-a-slug")).to.be.true;
@@ -74,7 +99,11 @@ describe("Regular Expression Checks", function() {
   });
 
   describe("email(str)", function() {
-    var email = regex.email;
+    var email;
+
+    before(() => {
+      email = regex.exports.email;
+    });
 
     it("is true for strings with emails of any TLD", function() {
       expect(email("example@example.com")).to.be.true;
@@ -84,7 +113,11 @@ describe("Regular Expression Checks", function() {
   });
 
   describe("url(str)", function() {
-    var url = regex.url;
+    var url;
+
+    before(() => {
+      url = regex.exports.url;
+    });
 
     it("is true for any URL", function() {
       expect(url("https://github.com")).to.be.true;

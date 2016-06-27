@@ -1,6 +1,7 @@
-var util    = require("./utilities.js"),
-    not     = util.not,
-    type    = require("./type.js"),
+import type from "./type.js";
+import util from "./utilities.js";
+
+var not     = util.not,
     _null   = type._null,
     undef   = type._undefined,
     nan     = type.nan;
@@ -10,15 +11,15 @@ function exists(value) {
 }
 
 function truthy(value) {
-  return exists(value) && not(nan(value)) && !!value;
+  return exists(value) && Boolean(value);
 }
 
 function falsey(value) {
   return not(truthy(value));
 }
 
-module.exports = {
-  exists : exists,
-  truthy : truthy,
-  falsey : falsey
+export default {
+  exists,
+  truthy,
+  falsey
 };

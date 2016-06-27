@@ -1,27 +1,20 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    number = require("../src/cmp/number.js");
+    number = {};
 
 describe("Number Checking", function() {
-  describe("equal(number)", function() {
-    var equal = number.equal;
-
-    it("should be true for equal params", function() {
-      expect(equal(10, 10)).to.be.true;
-    });
-
-    it("should be false for disparate types", function() {
-      expect(equal({}, 10)).to.be.false;
-    });
-
-    it("should be false for different numbers", function() {
-      expect(equal(10, 20)).to.be.false;
-    });
+  
+  before(() => {
+    require("./lib/compile")("./src/cmp/number.js", number);
   });
 
   describe("even(number)", function() {
-    var even = number.even;
+    var even;
+
+    before(() => {
+      even = number.exports.even;
+    });
 
     it("should be true for even numbers", function() {
       expect(even(2)).to.be.true;
@@ -35,7 +28,11 @@ describe("Number Checking", function() {
   });
 
   describe("odd(number)", function() {
-    var odd = number.odd;
+    var odd;
+
+    before(() => {
+      odd = number.exports.odd;
+    });
 
     it("should be true for odd numbers", function() {
       expect(odd(1)).to.be.true;
@@ -49,7 +46,11 @@ describe("Number Checking", function() {
   });
 
   describe("positive(number)", function() {
-    var positive = number.positive;
+    var positive;
+
+    before(() => {
+      positive = number.exports.positive;
+    });
 
     it("should be true for numbers greater than 0", function() {
       expect(positive(50)).to.be.true;
@@ -59,7 +60,11 @@ describe("Number Checking", function() {
   });
 
   describe("negative(number)", function() {
-    var negative = number.negative;
+    var negative;
+
+    before(() => {
+      negative = number.exports.negative;
+    });
 
     it("should be true for numbers less than 0", function() {
       expect(negative(-1)).to.be.true;
@@ -69,7 +74,11 @@ describe("Number Checking", function() {
   });
 
   describe("higher(number, threshold)", function() {
-    var higher = number.higher;
+    var higher;
+
+    before(() => {
+      higher = number.exports.higher;
+    });
 
     it("should be true for numbers higher than threshold", function() {
       expect(higher(10, 5)).to.be.true;
@@ -85,6 +94,10 @@ describe("Number Checking", function() {
   describe("lower(number, threshold)", function() {
     var lower = number.lower;
 
+    before(() => {
+      lower = number.exports.lower;
+    });
+
     it("should be true for numbers lower than threshold", function() {
       expect(lower(5, 10)).to.be.true;
       expect(lower(10, 100)).to.be.true;
@@ -97,7 +110,11 @@ describe("Number Checking", function() {
   });
 
   describe("within(number, min, max)", function() {
-    var within = number.within;
+    var within;
+
+    before(() => {
+      within = number.exports.within;
+    });
 
     it("should be true for 0 < 4 < 8", function() {
       expect(within(4, 0, 8)).to.be.true;
@@ -105,7 +122,11 @@ describe("Number Checking", function() {
   });
 
   describe("decimal(number)", function() {
-    var decimal = number.decimal;
+    var decimal;
+
+    before(() => {
+      decimal = number.exports.decimal;
+    });
 
     it("should have a remainder between 0 and 1 when % 1", function() {
       expect(decimal(127.4)).to.be.true;
@@ -113,7 +134,11 @@ describe("Number Checking", function() {
   });
 
   describe("integer(number)", function() {
-    var integer = number.integer;
+    var integer;
+
+    before(() => {
+      integer = number.exports.integer;
+    });
 
     it("should be true for % 1", function() {
       expect(integer(12312492)).to.be.true;
@@ -122,7 +147,11 @@ describe("Number Checking", function() {
   });
 
   describe("finite(number)", function() {
-    var finite = number.finite;
+    var finite;
+
+    before(() => {
+      finite = number.exports.finite;
+    });
 
     it("should be true for any non-NaN number", function() {
       expect(finite(123456)).to.be.true;
@@ -136,6 +165,10 @@ describe("Number Checking", function() {
 
   describe("infinite(number)", function() {
     var infinite = number.infinite;
+
+    before(() => {
+      infinite = number.exports.infinite;
+    });
 
     it("should only be true for Infinity", function() {
       expect(infinite(Infinity)).to.be.true;

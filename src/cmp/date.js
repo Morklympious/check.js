@@ -1,35 +1,12 @@
-var type = require("./type.js"),
-    test = type.date,
+import type from "./type.js";
+import util from "./utilities.js";
+
+var test   = type.date,
     number = type.number,
-    util = require("./utilities.js"),
-    not = util.not;
+    not    = util.not;
 
-
-var days = [
-  "sunday",
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday"
-  ];
-
-var months = [
-  "january",
-  "february",
-  "march",
-  "april",
-  "may",
-  "june",
-  "july",
-  "august",
-  "september",
-  "october",
-  "november",
-  "december"
-];
-
+var days   = "sunday monday tuesday wednesday thursday friday saturday".split(" "),
+    months = "january february march april may june july august september october november december".split(" ");
 
 function day(date, name) {
   return test(date) && name.toLowerCase() === days[date.getDay()];
@@ -63,18 +40,16 @@ function year(date, target) {
   return test(date) && number(target) && target === date.getFullYear();
 }
 
-function past(date, delta) {
+function past(date, delta = 0) {
   var now = new Date(),
-      delta = delta || 0,
       current = now.getTime(),
       dTime = date.getTime();
 
   return test(date) && (((current - delta) < dTime) && (dTime < current));
 }
 
-function future(date, delta) {
+function future(date, delta = 0) {
   var now     = new Date(),
-      delta   = delta || 0,
       current = now.getTime(),
       dTime   = date.getTime();
 
@@ -89,7 +64,6 @@ function weekday(date) {
   return not(weekend(date));
 }
 
-// date is within date range
 function within(date, start, end) {
   var starting = start.getTime(),
       chosen   = date.getTime(),
@@ -98,16 +72,16 @@ function within(date, start, end) {
   return (starting <= chosen) && (chosen <= ending);
 }
 
-module.exports = {
-  day       : day,
-  today     : today,
-  yesterday : yesterday,
-  tomorrow  : tomorrow,
-  month     : month,
-  year      : year,
-  past      : past,
-  future    : future,
-  weekend   : weekend,
-  weekday   : weekday,
-  within    : within
+export default {
+  day,
+  today,
+  yesterday,
+  tomorrow,
+  month,
+  year,
+  past,
+  future,
+  weekend,
+  weekday,
+  within
 };

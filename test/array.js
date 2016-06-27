@@ -1,11 +1,21 @@
 /* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    array  = require("../src/cmp/array.js");
+    array  = {};
+
 
 describe("Array Checking", function() {
+
+  before(() => {
+   require("./lib/compile")("./src/cmp/array.js", array).then(() => console.log('ARRAY BABY',array));
+  });
+
   describe("contains(collection, value)", function() {
-    var contains = array.contains;
+    var contains;
+
+    before(() => {
+      contains = array.exports.contains;
+    });
 
     it("should be a function", function() {
       expect(contains).to.be.a("function");
@@ -25,7 +35,11 @@ describe("Array Checking", function() {
   });
 
   describe("empty(collection)", function() {
-    var empty = array.empty;
+    var empty;
+
+    before(() => {
+      empty = array.exports.empty;
+    });
 
     it("should be a function", function() {
       expect(empty).to.be.a("function");

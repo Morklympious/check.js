@@ -1,14 +1,25 @@
-/* eslint-disable no-unused-expressions */
+/* eslint-disable no-unused-expressions, vars-on-top */
 
 var expect = require("chai").expect,
-    date  = require("../src/cmp/date.js");
+    date   = {};
 
 describe("Date Checking", function() {
+
+  before(() => {
+    require("./lib/compile")("./src/cmp/date.js", date);
+  });
+
   var birthday  = new Date("1/16/1991");
 
+
+
   describe("day(date, day)", function() {
-    var day = date.day;
+    var day;
     var wednesday = birthday;
+
+    before(() => {
+      day = date.exports.day;
+    });
 
     it("should be true for matching days", function() {
       expect(day(wednesday, "wednesday")).to.be.true;
@@ -20,9 +31,13 @@ describe("Date Checking", function() {
   });
 
   describe("today(date)", function() {
-    var today     = date.today,
+    var today,
         now       = new Date(),
         tomorrow  = now.setDate(now.getDate + 10);
+
+    before(() => {
+      today = date.exports.today;
+    });
 
     it("should be true for today", function() {
       expect(today(new Date())).to.be.true;
@@ -38,10 +53,13 @@ describe("Date Checking", function() {
   });
 
   describe("yesterday(date)", function() {
-    var yesterday = date.yesterday,
+    var yesterday,
         now       = new Date(),
         prior     = new Date(now.setDate(now.getDate - 1));
 
+    before(() => {
+      yesterday = date.exports.yesterday;
+    });
 
     it("should be true for yesterday", function() {
       expect(yesterday(prior)).to.be.false;
@@ -60,10 +78,13 @@ describe("Date Checking", function() {
   });
 
   describe("tomorrow(date)", function() {
-    var tomorrow  = date.tomorrow,
+    var tomorrow,
         now       = new Date();
         later     = new Date(now.setDate(now.getDate() + 1)),
 
+    before(() => {
+      tomorrow = date.exports.tomorrow;
+    });
 
     it("should be true for future date", function() {
       expect(tomorrow(later)).to.be.true;
@@ -79,7 +100,11 @@ describe("Date Checking", function() {
   });
 
   describe("month(date, target)", function() {
-    var month = date.month;
+    var month;
+
+    before(() => {
+      month = date.exports.month;
+    });
 
     it("should be true if date is in month", function() {
       expect(month(birthday, "january")).to.be.true;
@@ -91,7 +116,11 @@ describe("Date Checking", function() {
   });
 
   describe("year(date, target)", function() {
-    var year = date.year;
+    var year;
+
+    before(() => {
+      year = date.exports.year;
+    });
 
     it("should be true if year contains date", function() {
       expect(year(birthday, 1991)).to.be.true;
@@ -105,10 +134,14 @@ describe("Date Checking", function() {
   });
 
   describe("past(date, delta)", function() {
-    var past      = date.past,
+    var past,
         today     = new Date(),
         yesterday = new Date(today.setDate(today.getDate() - 1)),
         delta     = (1000 * 60 * 60 * 25); // A little over 1 day
+
+    before(() => {
+      past = date.exports.past;
+    });
 
 
     it("should be true if date is in the past within ms delta", function() {
@@ -121,16 +154,24 @@ describe("Date Checking", function() {
   });
 
   describe("future(date, delta)", function() {
-    var future    = date.future;
+    var future,
         today     = new Date(),
-        yesterday = new Date(today.setDate(today.getDate - 1));
+        yesterday = new Date(today.setDate(today.getDate - 1)),
         delta     = (1000 * 60 * 60 * 24); // 1 day
+
+    before(() => {
+      future = date.exports.future;
+    });
   });
 
   describe("weekend(date)", function() {
-    var weekend = date.weekend,
+    var weekend,
     wednesday   = new Date("01/16/1991"),
     saturday    = new Date("01/19/1991");
+
+    before(() => {
+      weekend = date.exports.weekend;
+    });
 
     it("Should be false for a weekday", function() {
       expect(weekend(wednesday)).to.be.false;
@@ -142,9 +183,13 @@ describe("Date Checking", function() {
   });
 
   describe("weekday(date)", function() {
-    var weekday = date.weekday,
+    var weekday,
         wednesday = new Date("01/16/1991"),
         saturday  = new Date("01/19/1991");
+
+    before(() => {
+      weekday = date.exports.weekday;
+    });
 
     it("Should be true for a weekday", function() {
       expect(weekday(wednesday)).to.be.true;
@@ -156,9 +201,13 @@ describe("Date Checking", function() {
   });
 
   describe("within(date, start, end)", function() {
-    var within = date.within,
+    var within,
         birthday = new Date("1/16/1991"),
         afterward = new Date("1/23/1991");
+
+    before(() => {
+      within = date.exports.within;
+    });
 
     it("should be true for date within start/end", function() {
       var date = new Date("1/18/1991");
