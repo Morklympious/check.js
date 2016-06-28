@@ -2,21 +2,19 @@ import util from "./utilities.js";
 
 var forge = util.forge;
 
-//OPTIMIZATION: Shorten the values here to remove [object ],
-// and make the logic slice the toString 
 var types = {
-  "object"     : "Object",
-  "array"      : "Array",
-  "string"     : "String",
-  "boolean"    : "Boolean",
-  "number"     : "Number",
-  "regex"      : "RegExp",
-  "date"       : "Date",
-  "error"      : "Error",
-  "_undefined" : "Undefined",
-  "_null"      : "Null",
-  "_function"  : "Function",
-  "_arguments" : "Arguments"
+  object     : "Object",
+  array      : "Array",
+  string     : "String",
+  boolean    : "Boolean",
+  number     : "Number",
+  regex      : "RegExp",
+  date       : "Date",
+  error      : "Error",
+  _function  : "Function",
+  _undefined : "Undefined",
+  _null      : "Null",
+  _arguments : "Arguments"
 };
 
 
@@ -24,12 +22,12 @@ var types = {
 var object      = forge(type, types.object),
     array       = Array.isArray || forge(type, types.array),
     string      = forge(type, types.string),
-    _function   = forge(type, types._function),
     boolean     = forge(type, types.boolean),
     number      = forge(type, types.number),
     regexp      = forge(type, types.regexp),
     date        = forge(type, types.date),
     error       = forge(type, types.error),
+    _function   = forge(type, types._function),
     _arguments  = forge(type, types._arguments),
     _null       = forge(type, types._null),
     _undefined  = forge(type, types._undefined);
@@ -39,7 +37,7 @@ var object      = forge(type, types.object),
 function type(expected, actual) {
   var formed = {}.toString.call(actual),
       short  = formed.substring(8, formed.length - 1);
-  
+
   return expected ? short === expected : short;
 }
 

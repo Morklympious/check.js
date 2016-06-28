@@ -10,7 +10,7 @@ function finite(number) {
 }
 
 function infinite(number) {
-  return test(number) && not(nan(number)) && not(finite(number));
+  return test(number) && number === Infinity;
 }
 
 function even(number) {
@@ -19,7 +19,7 @@ function even(number) {
 }
 
 function odd(number) {
-  return not(even(number)) && finite(number);
+  return finite(number) && not(even(number));
 }
 
 function positive(number) {

@@ -8,6 +8,10 @@ var test   = type.date,
 var days   = "sunday monday tuesday wednesday thursday friday saturday".split(" "),
     months = "january february march april may june july august september october november december".split(" ");
 
+function _datestring(date) {
+  return date.toDateString();
+}
+
 function day(date, name) {
   return test(date) && name.toLowerCase() === days[date.getDay()];
 }
@@ -15,21 +19,21 @@ function day(date, name) {
 function today(date) {
   var tday = new Date().toDateString();
 
-  return test(date) && tday === date.toDateString();
+  return test(date) && tday === _datestring(date);
 }
 
 function yesterday(date) {
   var tdy = new Date(),
       yst = new Date(tdy.setDate(tdy.getDate() - 1));
 
-  return test(date) && date.toDateString() === yst.toDateString();
+  return test(date) && _datestring(date) === _datestring(yst);
 }
 
 function tomorrow(date) {
   var tdy   = new Date(),
       tmrrw = new Date(tdy.setDate(tdy.getDate() + 1));
 
-  return test(date) && date.toDateString() === tmrrw.toDateString();
+  return test(date) && _datestring(date) === _datestring(tmrrw);
 }
 
 function month(date, target) {
