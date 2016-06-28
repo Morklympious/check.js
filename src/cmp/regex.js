@@ -1,8 +1,10 @@
 import type from "./type.js";
 import util from "./utilities.js";
+import existence from "./existence.js"
 
-var test  = type.regexp,
-    forge = util.forge;
+var test   = type.regexp,
+    forge  = util.forge,
+    falsey = existence.falsey;
 
 // Ripped from
 // code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149
@@ -15,8 +17,11 @@ var patterns = {
   url      : /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
 };
 
-function pattern(expected, actual) {
-  return test(actual) && expected.test(actual);
+function pattern(expression, actual) {
+  // If actual is undefined, let's return a regex test function.
+  if(falsey(actual)) return forge(pattern, expression);
+
+  return test(actual) && expression.test(actual);
 }
 
 export default {

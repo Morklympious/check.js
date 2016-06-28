@@ -4,7 +4,7 @@ var expect = require("chai").expect,
     regex  = {}
 
 describe("Regular Expression Checks", function() {
-  
+
   before(() => {
     require("./lib/compile")("./src/cmp/regex.js", regex);
   });
@@ -20,6 +20,11 @@ describe("Regular Expression Checks", function() {
       expect(pattern(/[0-9]/, "1239876")).to.be.true;
       expect(pattern(/8[0-9]/, "1234")).to.be.false;
     });
+
+    it("will return a partially applied fn if there's nothing to test against initially", function() {
+      expect(pattern(/[0-9]/)).to.be.a("function");
+      expect(pattern(/[0-9]/)("1239876")).to.be.true;
+    })
   });
 
   describe("username(str)", function() {

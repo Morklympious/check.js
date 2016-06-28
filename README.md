@@ -62,7 +62,7 @@ Check to see if a date falls on a weekday.
 Check to see if `date` is between a `start` date and `end` date. This is for finer grained control of date ranges and whether or not you want to specify both a start and end range.
 
 
-### Existence
+### Existence (`check.existence`)
 #### `exists(value)`
 Check to see if a value simply exists.
 
@@ -72,7 +72,7 @@ Check to see if the boolean analog of `value` is true.
 #### `falsey(value)`
 Check to see if the boolean analog of `value` is false.
 
-### Number
+### Number (`check.number`)
 #### `finite(number)`
 Check to see if a number is finite (not `Infinity` and not `NaN`).
 
@@ -106,7 +106,7 @@ Check to see if `number` is a decimal number (e.g. `13.2`).
 #### `integer(number)`
 Check to see if `number` is an integer.
 
-### Object
+### Object (`check.object`)
 #### `size(obj, count)`
 Check to see if `obj` has `count` number of keys.
 
@@ -116,8 +116,9 @@ Check to see if `obj` is empty (has no `own` properties).
 #### `contains(obj, prop)`
 Check to see if `obj` contains property `prop`.
 
-
-### Regex
+### Regex (`check.regex`)
+#### `pattern(expected, actual)`
+Check to see if `actual` is a pattern match for `expression`
 
 ### String
 
