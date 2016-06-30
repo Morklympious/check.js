@@ -117,10 +117,17 @@ Check to see if `obj` is empty (has no `own` properties).
 Check to see if `obj` contains property `prop`.
 
 ### Regex (`check.regex`)
-#### `pattern(expected, actual)`
+#### `pattern(expected [, actual])`
 Check to see if `actual` is a pattern match for `expression`
 
+If `actual` isn't supplied, `pattern` will return a curried function that will test for that specific pattern when you call it with a string.
+
 ### String
+#### `contains(str, sub)`
+Check to see if `sub` is inside of `str`
+
+#### `caps(str)`
+Check to see if `str` is all caps.
 
 ### Type
 
