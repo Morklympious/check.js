@@ -38,7 +38,7 @@ Check to see if the supplied date is actually today.
 Check to see if the supplied date is yesterday (relative to today).
 
 #### `tomorrow(date)`
-Check to see if the supplied date is tomorrow (relative to today).
+Check to see if the supplied date is tomorrow (relative to today  ).
 
 #### `month(date, target)`
 Check to see if a date falls within one of the twelve months.
@@ -129,6 +129,54 @@ Check to see if `sub` is inside of `str`
 #### `caps(str)`
 Check to see if `str` is all caps.
 
+#### `lowercase(str)`
+
+#### `begins(str, sub)`
+
+#### `ends(str, sub)`
+
+#### `empty(str)`
+
 ### Type
 
+#### `type(expected, actual)`
+
+#### `object(obj)`
+
+#### `array(arr)`
+
+#### `string(str)`
+
+#### `boolean(bool)`
+
+#### `number(num)`
+
+#### `regexp(exp)`
+
+#### `date(date)`
+
+#### `error(err)`
+
+#### `_function(fn)`
+
+#### `_arguments(args)`
+
+#### `_null(obj)`
+
+#### `_undefined(obj)`
+
+#### `char(str)`
+
+#### `nan(value)`
+
+#### `json(obj)`
+
+#### `promise(obj)`
+
 ### Utilities
+
+#### `not(value)`
+
+#### `argen(args)`
+
+#### `forge(fn)`

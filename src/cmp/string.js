@@ -14,16 +14,14 @@ function lowercase(str) {
 }
 
 function begins(str, sub) {
-  // If str.indexOf(sub) is 0, bang will give true.
-  return contains(str, sub) && !str.indexOf(sub);
+  return Boolean(str.match(RegExp(`^${sub}`)));
 }
 
 function ends(str, sub) {
-  return contains(str, sub) && str.indexOf(sub) === (str.length - sub.length);
+  return Boolean(str.match(RegExp(`${sub}$`)));
 }
 
 function empty(str) {
-  // If str.length is 0, bang will give true.
   return test(str) && !str.length;
 }
 
