@@ -7,7 +7,6 @@ Author: Bradley Stafford.
 (_Originally by Aras Atasaygin_)
 
 ## This is a general-purpose check library.
-- No dependencies
 - Node and Browser ready
 - Written with ES2015 modules, output via Rollup and compilation by Buble
 - Written to be micro (less than 5kb) because I wanted to challenge myself to do it!
@@ -130,53 +129,77 @@ Check to see if `sub` is inside of `str`
 Check to see if `str` is all caps.
 
 #### `lowercase(str)`
+Check to see if `str` is all lowercase.
 
 #### `begins(str, sub)`
+Check to see if `str` begins with `sub`.
 
 #### `ends(str, sub)`
+Check to see if `str` ends with `sub`.
 
 #### `empty(str)`
+Check to see if `str` is empty.
 
-### Type
+### Type (`check.type`)
 
 #### `type(expected, actual)`
+Check to see if `actual` is of type `expected`.
 
 #### `object(obj)`
+Check to see if `obj` is an Object.
 
 #### `array(arr)`
+Check to see if `arr` is an Array.
 
 #### `string(str)`
+Check to see if `str` is a String.
 
 #### `boolean(bool)`
+Check to see if `bool` is a Boolean.
 
 #### `number(num)`
+Check to see if `num` is a Number.
 
 #### `regexp(exp)`
+Check to see if `exp` is a Regular Expression.
 
 #### `date(date)`
+Check to see if `date` is a Date Object.
 
 #### `error(err)`
+Check to see if `err` is an Error Object.
 
 #### `_function(fn)`
+Check to see if `fn` is a Function.
 
 #### `_arguments(args)`
+Check to see if `args` is the `arguments` object.
 
 #### `_null(obj)`
+Check to see if `obj` is null.
 
-#### `_undefined(obj)`
+#### `_undefined(value)`
+Check to see if `value` is undefined.
 
 #### `char(str)`
+Check to see if `str` is a single character.
 
 #### `nan(value)`
+Check to see if `value` is `NaN`
 
 #### `json(obj)`
+Check to see if `obj` is a `JSON` object.
 
 #### `promise(obj)`
+Check to see if `obj` conforms to Promises/A+.
 
 ### Utilities
 
 #### `not(value)`
+Check the inverse of a boolean value
 
 #### `argen(args)`
+Short for "argument generation", Used to grab args in other functions for manipulation.
 
-#### `forge(fn)`
+#### `forge(fn)
+This is a partial application function. `

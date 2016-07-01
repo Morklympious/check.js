@@ -22,7 +22,8 @@ function ends(str, sub) {
 }
 
 function empty(str) {
-  return test(str) && !str.length;
+  // There can be only one.
+  return str === "";
 }
 
 export default {
