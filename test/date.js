@@ -4,12 +4,11 @@ var expect = require("chai").expect,
     date = {};
 
 describe("Date Checking", function() {
+  var birthday  = new Date("1/16/1991");
 
   before(() => {
-   require("./lib/compile")("./src/cmp/date.js", date)
+   require("./lib/compile")("./src/cmp/date.js", date);
   });
-
-  var birthday  = new Date("1/16/1991");
 
   describe("day(date, day)", function() {
     var day,
@@ -153,8 +152,8 @@ describe("Date Checking", function() {
   describe("future(date, delta)", function() {
     var future,
         today     = new Date(),
-        tomorrow  = new Date(today.setDate(today.getDate + 1));
-        delta     = (1000 * 60 * 60 * 48); // 2 days
+        tomorrow  = new Date(today.setDate(today.getDate() + 1)),
+        delta     = (1000 * 60 * 60 * 25); // little over 1 day
 
     before(() => {
       future = date.exports.future;
@@ -162,6 +161,7 @@ describe("Date Checking", function() {
 
     it("should be true if date is in the future within ms delta", function() {
       expect(future(tomorrow, delta)).to.be.true;
+      expect(future(tomorrow, delta*2)).to.be.true;
     });
 
     it("should be false if future date is out of delta range", function() {

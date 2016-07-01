@@ -57,7 +57,7 @@ function future(date, delta = 0) {
       current = now.getTime(),
       dTime   = date.getTime();
 
-  return test(date) && (current < dTime && dTime < (current + delta)) || current < dTime;
+  return test(date) && ((current + delta) > dTime) && dTime > current
 }
 
 function weekend(date) {
