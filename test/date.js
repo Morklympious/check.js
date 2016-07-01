@@ -1,21 +1,19 @@
-/* eslint-disable no-unused-expressions, vars-on-top */
+/* eslint-disable no-unused-expressions */
 
 var expect = require("chai").expect,
-    date   = {};
+    date = {};
 
 describe("Date Checking", function() {
 
   before(() => {
-    require("./lib/compile")("./src/cmp/date.js", date);
+   require("./lib/compile")("./src/cmp/date.js", date)
   });
 
   var birthday  = new Date("1/16/1991");
 
-
-
   describe("day(date, day)", function() {
-    var day;
-    var wednesday = birthday;
+    var day,
+        wednesday = birthday;
 
     before(() => {
       day = date.exports.day;
@@ -143,7 +141,6 @@ describe("Date Checking", function() {
       past = date.exports.past;
     });
 
-
     it("should be true if date is in the past within ms delta", function() {
       expect(past(yesterday, delta)).to.be.true;
     });
@@ -156,11 +153,19 @@ describe("Date Checking", function() {
   describe("future(date, delta)", function() {
     var future,
         today     = new Date(),
-        yesterday = new Date(today.setDate(today.getDate - 1)),
-        delta     = (1000 * 60 * 60 * 24); // 1 day
+        tomorrow  = new Date(today.setDate(today.getDate + 1));
+        delta     = (1000 * 60 * 60 * 48); // 2 days
 
     before(() => {
       future = date.exports.future;
+    });
+
+    it("should be true if date is in the future within ms delta", function() {
+      expect(future(tomorrow, delta)).to.be.true;
+    });
+
+    it("should be false if future date is out of delta range", function() {
+      expect(future(tomorrow, 1000)).to.be.false;
     });
   });
 
