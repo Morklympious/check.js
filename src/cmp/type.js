@@ -32,8 +32,6 @@ var object      = forge(type, types.object),
     _null       = forge(type, types._null),
     _undefined  = forge(type, types._undefined);
 
-// type(types.object, {}) //=> true
-// type(null, {}) //=> [object Object];
 function type(expected, actual) {
   var formed = {}.toString.call(actual),
       short  = formed.substring(8, formed.length - 1);
@@ -53,9 +51,6 @@ function json(value) {
   return Boolean(JSON.parse(value));
 }
 
-// Special use case for Promises,
-// The A+ spec says anything with a .then()
-// is acceptable as a promise.
 function promise(value) {
   return Boolean(value.then) && _function(value.then);
 }

@@ -6,7 +6,6 @@ import object from "./cmp/object.js";
 import regex from "./cmp/regex.js";
 import string from "./cmp/string.js";
 import type from "./cmp/type.js";
-import utilities from "./cmp/utilities.js";
 
 export default {
   array,
@@ -16,7 +15,5 @@ export default {
   object,
   regex,
   string,
-  type,
-  utilities,
-  not : utilities.not
+  type
 };
