@@ -15,11 +15,11 @@ Author: Bradley Stafford.
 
 You can find the API documentation under the `docs` folder. 
 
-[Array (`check.array`)](docs/check.array.md)
-[Date (`check.date`)](docs/check.date.md)
-[Existence (`check.existence`)](docs/check.existence.md)
-[Number (`check.number`)](docs/check.number.md)
-[Object (`check.object`)](docs/check.object.md)
-[Regex (`check.regex`)](docs/check.regex.md)
-[String (`check.string`)](docs/check.string.md)
-[Type (`check.type`)](docs/check.type.md)
+[Array (`check.array`)](docs/check.array.md)  
+[Date (`check.date`)](docs/check.date.md)  
+[Existence (`check.existence`)](docs/check.existence.md)  
+[Number (`check.number`)](docs/check.number.md)  
+[Object (`check.object`)](docs/check.object.md)  
+[Regex (`check.regex`)](docs/check.regex.md)  
+[String (`check.string`)](docs/check.string.md)  
+[Type (`check.type`)](docs/check.type.md)  
