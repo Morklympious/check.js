@@ -7,7 +7,7 @@ var expect = require("chai").expect,
 describe("Array Checking", () => {
 
   before(() => {
-   require("./lib/compile")("./src/cmp/array.js", array).then(() => console.log('ARRAY BABY',array));
+   require("./lib/compile")("./src/cmp/array.js", array);
   });
 
   describe("contains(collection, value)", () => {
