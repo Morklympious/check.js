@@ -1,6 +1,6 @@
 # check.js
 
-A micro checking library. (Micro meaning less than 5kb (which I'm still working on))
+A micro checking library. (3.75kb minified!)
 Originally forked from [is.js](https://arasatasaygin.github.io/is.js/), I'm making it smaller because I want to be able to put it onto [microjs](http://microjs.com/) because I'm some kind of man-baby who wants to do that.  
 
 Author: Bradley Stafford.

@@ -1,4 +1,5 @@
 ### Regex (`check.regex`)
+
 #### `pattern(expected [, actual])`
 Check to see if `actual` is a pattern match for `expression`
 
