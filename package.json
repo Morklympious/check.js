@@ -1,7 +1,7 @@
 {
   "name": "check.js",
   "version": "0.1.0",
-  "main": "./src/check.js",
+  "main": "./dist/check.min.js",
   "license": "MIT",
   "description": "Micro-sized check library",
   "scripts": {
