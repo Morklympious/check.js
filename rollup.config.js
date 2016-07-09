@@ -3,8 +3,8 @@ var buble = require("rollup-plugin-buble"),
 
 module.exports = {
     entry: "./src/check.js",
-    dest: "./dist/check.bundle.js",
-    format: "iife",
+    dest: "./dist/check.min.js",
+    format: "umd",
     moduleName: "check",
     plugins: [ buble(), uglify() ]
 };

@@ -2,35 +2,19 @@ import util from "./utilities.js";
 
 var forge = util.forge;
 
-var types = {
-  object     : "Object",
-  array      : "Array",
-  string     : "String",
-  boolean    : "Boolean",
-  number     : "Number",
-  regex      : "RegExp",
-  date       : "Date",
-  error      : "Error",
-  _function  : "Function",
-  _undefined : "Undefined",
-  _null      : "Null",
-  _arguments : "Arguments"
-};
-
-
 /* eslint-disable no-use-before-define */
-var object      = forge(type, types.object),
-    array       = Array.isArray || forge(type, types.array),
-    string      = forge(type, types.string),
-    boolean     = forge(type, types.boolean),
-    number      = forge(type, types.number),
-    regexp      = forge(type, types.regex),
-    date        = forge(type, types.date),
-    error       = forge(type, types.error),
-    _function   = forge(type, types._function),
-    _arguments  = forge(type, types._arguments),
-    _null       = forge(type, types._null),
-    _undefined  = forge(type, types._undefined);
+var object      = forge(type, "Object"),
+    array       = Array.isArray || forge(type, "Array"),
+    string      = forge(type, "String"),
+    boolean     = forge(type, "Boolean"),
+    number      = forge(type, "Number"),
+    regexp      = forge(type, "RegExp"),
+    date        = forge(type, "Date"),
+    error       = forge(type, "Error"),
+    _function   = forge(type, "Function"),
+    _arguments  = forge(type, "Arguments"),
+    _null       = forge(type, "Null"),
+    _undefined  = forge(type, "Undefined");
 
 function type(expected, actual) {
   var formed = {}.toString.call(actual),
@@ -56,7 +40,6 @@ function promise(value) {
 }
 
 export default {
-  types,
   type,
   object,
   array,
