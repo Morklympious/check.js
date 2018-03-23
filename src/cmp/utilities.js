@@ -14,6 +14,12 @@ function forge(fn) {
   };
 }
 
+export {
+  not,
+  forge,
+  argen
+};
+
 export default {
   not,
   forge,

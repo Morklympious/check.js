@@ -10,6 +10,11 @@ function empty(collection) {
   return test(collection) && !collection.length;
 }
 
+export {
+  contains,
+  empty
+};
+
 export default {
   contains,
   empty

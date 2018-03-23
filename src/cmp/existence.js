@@ -18,6 +18,12 @@ function falsey(value) {
   return not(truthy(value));
 }
 
+export {
+  exists,
+  truthy,
+  falsey
+};
+
 export default {
   exists,
   truthy,

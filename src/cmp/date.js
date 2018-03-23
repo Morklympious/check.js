@@ -57,7 +57,7 @@ function future(date, delta = 0) {
       current = now.getTime(),
       dTime   = date.getTime();
 
-  return test(date) && ((current + delta) > dTime) && dTime > current
+  return test(date) && ((current + delta) > dTime) && dTime > current;
 }
 
 function weekend(date) {
@@ -75,6 +75,20 @@ function within(date, start, end) {
 
   return (starting <= chosen) && (chosen <= ending);
 }
+
+export {
+  day,
+  today,
+  yesterday,
+  tomorrow,
+  month,
+  year,
+  past,
+  future,
+  weekend,
+  weekday,
+  within
+};
 
 export default {
   day,

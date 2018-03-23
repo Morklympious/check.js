@@ -5,7 +5,6 @@ var expect = require("chai").expect,
 
 
 describe("Array Checking", () => {
-
   before(() => {
    require("./lib/compile")("./src/cmp/array.js", array);
   });

@@ -26,6 +26,15 @@ function empty(str) {
   return str === "";
 }
 
+export {
+  contains,
+  caps,
+  lowercase,
+  begins,
+  ends,
+  empty
+};
+
 export default {
   contains,
   caps,

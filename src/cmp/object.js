@@ -15,6 +15,12 @@ function contains(obj, prop) {
   return test(obj) && Boolean(obj[prop]);
 }
 
+export {
+  size,
+  empty,
+  contains
+};
+
 export default {
   size,
   empty,

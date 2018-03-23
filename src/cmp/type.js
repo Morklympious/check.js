@@ -39,6 +39,26 @@ function promise(value) {
   return Boolean(value.then) && _function(value.then);
 }
 
+export {
+  type,
+  object,
+  array,
+  string,
+  char,
+  boolean,
+  number,
+  regexp,
+  date,
+  error,
+  _function,
+  _arguments,
+  _null,
+  _undefined,
+  nan,
+  json,
+  promise
+};
+
 export default {
   type,
   object,

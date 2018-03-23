@@ -50,6 +50,20 @@ function integer(number) {
   return test(number) && not(decimal(number));
 }
 
+export {
+  even,
+  odd,
+  positive,
+  negative,
+  higher,
+  lower,
+  within,
+  decimal,
+  integer,
+  finite,
+  infinite
+};
+
 export default {
   even,
   odd,
@@ -63,3 +77,5 @@ export default {
   finite,
   infinite
 };
+
+
